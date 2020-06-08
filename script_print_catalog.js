@@ -365,10 +365,10 @@ request.onload = function () {
   ${productDescriptionData.product_description}
     </p>
     <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day} - ${productDescriptionData.max_processing_day} bussiness days</p>
-  <a style="${dataArwort[0] && dataArwort[0].template_url !== "" ? "" : "display:none"}" href="${urlDownloadFrontArtWord}" class="download-template _2 w-inline-block">
+  <a style="${dataArwort[0] && dataArwort[0].template_url !== "" ? "" : "display:none"}" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
   Download Artwork Template
     </a>
-  <a style="${dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template _2 w-inline-block">
+  <a style="${dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
   Download Artwork Templates Front
     </a>
   <br>
