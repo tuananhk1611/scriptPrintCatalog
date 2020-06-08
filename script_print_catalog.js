@@ -1,4 +1,4 @@
-console.log(1111);
+console.log(222);
 var request = new XMLHttpRequest();
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'https://gapi.dev.shopbase.net/v1/pod/catalogs', true);
