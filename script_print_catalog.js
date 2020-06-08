@@ -371,7 +371,6 @@ request.onload = function () {
   <a style="${dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
   Download Artwork Templates Front
     </a>
-  <br>
   <a style="${dataArwortBack[0] && dataArwortBack[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadBackArtWord}" class="download-template w-inline-block">
   Download Artwork Templates Back
     </a>
