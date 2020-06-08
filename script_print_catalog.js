@@ -1,4 +1,282 @@
-console.log(222);
+window.sampleShippingTimeData = [
+  [
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Unisex Tank"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Ladies T-shirt"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Premium Ladies T-shirt"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Long Sleeve Tee"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Unisex T-shirt"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "V-neck T-shirt"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Crewneck Sweatshirt"
+    },
+    {
+      "name": "Apparel",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Unisex Hoodie"
+    }
+  ],
+  [
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Hoodie"
+    },
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Zip Hoodie"
+    },
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "T-Shirt"
+    }
+  ],
+  [
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Bedding Set"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Portrait Canvas"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Hooded Blanket"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Square Canvas"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Landscape Canvas"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Sherpa Blanket"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Round Carpet"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Shower Curtain"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Quilt"
+    },
+    {
+      "name": "Home & Living",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Area Rug"
+    }
+  ],
+  [
+    {
+      "name": "Accessories",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "20",
+      "title": "Face Mask"
+    },
+    {
+      "name": "Accessories",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Neck Gaiter"
+    },
+    {
+      "name": "Accessories",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Sport Mask (with filters)"
+    },
+    {
+      "name": "Accessories",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Fabric Mask (with filters)"
+    },
+    {
+      "name": "Accessories",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Tote Bag"
+    }
+  ],
+  [
+    {
+      "name": "Shoes",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Low Top Shoes"
+    },
+    {
+      "name": "Shoes",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Leather Boots"
+    }
+  ],
+  [
+    {
+      "name": "Drinkware",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Tumbler"
+    },
+    {
+      "name": "Drinkware",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Skinny Tumbler"
+    },
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Two-sided Mug"
+    },
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "5",
+      "shipping_time_to": "10",
+      "shipping_time_from_ww": "15",
+      "shipping_time_to_ww": "25",
+      "title": "Beverage Mug"
+    },
+    {
+      "name": "All Over Print",
+      "shipping_time_from": "15",
+      "shipping_time_to": "25",
+      "shipping_time_from_ww": "20",
+      "shipping_time_to_ww": "30",
+      "title": "Tumbler 30oz"
+    }
+  ]
+];
+
 var request = new XMLHttpRequest();
 // Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'https://gapi.dev.shopbase.net/v1/pod/catalogs', true);
