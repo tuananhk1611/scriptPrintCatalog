@@ -69,9 +69,9 @@ request.onload = function () {
           var dataCat = $(e.currentTarget).attr('data-cat');
           var dataIndex = $(e.currentTarget).attr('data-index');
           var productDescriptionData = injectData[dataCat].list_base_product[dataIndex];
-          var dataArwortFront = productDescriptionData.artworks.filter(item => item.part_name.toUpperCase() === "FRONT");
-          var dataArwortBack = productDescriptionData.artworks.filter(item => item.part_name.toUpperCase() === "BACK");
-          var dataArwort = productDescriptionData.artworks.filter(item => item.part_name.toUpperCase() !== "" && item.part_name.toUpperCase() !== "FRONT" && item.part_name.toUpperCase() !== "BACK");
+          var dataArwortFront = productDescriptionData.artworks.filter(item => item.part_name.toUpperCase() === "FRONT" && item.template_url !== "");
+          var dataArwortBack = productDescriptionData.artworks.filter(item => item.part_name.toUpperCase() === "BACK" && item.template_url !== "");
+          var dataArwort = productDescriptionData.artworks.filter(item => item.template_url !== "");
           var urlDownloadFrontArtWord = dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? dataArwortFront[0].template_url : '#';
           var urlDownloadBackArtWord = dataArwortBack[0] && dataArwortBack[0].template_url !== "" ? dataArwortBack[0].template_url : '#';
           var urlDownloadArtWord = dataArwort[0] && dataArwort[0].template_url !== "" ? dataArwort[0].template_url : '#';
@@ -86,13 +86,13 @@ request.onload = function () {
   ${productDescriptionData.product_description}
     </p>
     <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day} - ${productDescriptionData.max_processing_day} bussiness days</p>
-  <a style="${dataArwort[0] && dataArwort[0].template_url !== "" ? "" : "display:none"}" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
+  <a style="${dataArwort.length === 1 && dataArwort[0] ? "" : "display:none"}" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
   Download Artwork Template
     </a>
-  <a style="${dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
+  <a style="${dataArwort.length > 1 && dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
   Download Artwork Templates Front
     </a>
-  <a style="${dataArwortBack[0] && dataArwortBack[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadBackArtWord}" class="download-template w-inline-block">
+  <a style="${dataArwort.length > 1 && dataArwortBack[0] && dataArwortBack[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadBackArtWord}" class="download-template w-inline-block">
   Download Artwork Templates Back
     </a>
   `;
