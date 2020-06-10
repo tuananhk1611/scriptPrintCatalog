@@ -148,7 +148,7 @@ request.onload = function () {
           var contentShippingTimeTable = "";
           shippingProfileData.map(function(data) {
             var row = `
-  <td>${shippingData[data.zone_name].shipping_time_from} - ${shippingData[data.zone_name].shipping_time_to} <br> Business day</td>
+  <td>${shippingData[data.zone_name].shipping_time} <br> Business day</td>
     `;
             contentShippingTimeTable += row;
           })
