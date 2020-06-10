@@ -1,6 +1,6 @@
 var request = new XMLHttpRequest();
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs?no_cache=true', true);
+request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
 
 request.onload = function () {
     // Begin accessing JSON0 data here
@@ -86,7 +86,7 @@ request.onload = function () {
   ${productDescriptionData.product_description}
     </p>
     <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day} - ${productDescriptionData.max_processing_day} bussiness days</p>
-  <a style="${dataArwort.length === 1 && dataArwort[0] ? "" : "display:none"}" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
+  <a style="${dataArwort.length === 1 && dataArwort[0] ? "" : "display:none"}" href="${urlDownloadArtWord}" class="download-template w-inline-block">
   Download Artwork Template
     </a>
   <a style="${dataArwort.length > 1 && dataArwortFront[0] && dataArwortFront[0].template_url !== "" ? "" : "display:none" }" href="${urlDownloadFrontArtWord}" class="download-template w-inline-block">
