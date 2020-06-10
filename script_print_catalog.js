@@ -63,7 +63,21 @@ request.onload = function () {
       $('.catalog .navi .link-block-8').each(function(index, el) {
         navHeight += $(el).outerHeight();
       })
-      $('.catalog .navi').height(navHeight); 
+      $('.catalog .navi').height(navHeight);
+      $(window).scroll(function() {
+            var windscroll = $(window).scrollTop();
+            if (windscroll >= 100) {
+                $('.contetnt-printbase .base-product-wrap').each(function(index, value) {
+                    var id = $(value).attr('id');
+                   if ($(value).position().top <= windscroll + 10) {
+                     if ($(`.catalog-nav a[href="#${id}"]`) && $(`.catalog-nav a[href="#${id}"]`).length > 0) {
+                        $('.catalog-nav a').removeClass('w--current');
+                        $(`.catalog-nav a[href="#${id}"]`).addClass('w--current');
+                     }
+                   }
+                });
+            }
+       }).scroll();  
       $('.base-products').on('click', function(e) {
           var shippingZonesData = window.injectDataCatalog.result.shipping_zones;
           var dataCat = $(e.currentTarget).attr('data-cat');
@@ -197,21 +211,6 @@ request.onload = function () {
           productDescriptionPopup.innerHTML = "";
           productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
           $('.product-description-popup').fadeIn();
-          $(window).scroll(function() {
-                console.log(11111); 
-                var windscroll = $(window).scrollTop();
-                if (windscroll >= 100) {
-                    $('.contetnt-printbase .base-product-wrap').each(function(index, value) {
-                        var id = $(value).attr('id');
-                       if ($(value).position().top <= windscroll + 10) {
-                         if ($(`.catalog-nav a[href="#${id}"]`) && $(`.catalog-nav a[href="#${id}"]`).length > 0) {
-                            $('.catalog-nav a').removeClass('w--current');
-                            $(`.catalog-nav a[href="#${id}"]`).addClass('w--current');
-                         }
-                       }
-                    });
-                }
-           }).scroll();
         });
     } else {
         console.log('error');
