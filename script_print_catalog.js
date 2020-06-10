@@ -198,6 +198,7 @@ request.onload = function () {
           productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
           $('.product-description-popup').fadeIn();
           $(window).scroll(function() {
+                console.log(11111); 
                 var windscroll = $(window).scrollTop();
                 if (windscroll >= 100) {
                     $('.contetnt-printbase .base-product-wrap').each(function(index, value) {
