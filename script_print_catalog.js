@@ -57,6 +57,7 @@ request.onload = function () {
       });
       container.innerHTML = "";
       container.insertAdjacentHTML('beforeend', listContent);
+      $('.loading-section').fadeOut();  
       $('.catalog').fadeIn();
        // Calcu height navi
       var navHeight = 0;
