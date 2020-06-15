@@ -211,10 +211,10 @@ request.onload = function () {
    // Table Additional items
     var contentAdditionalTable = "";
     sizeData.map(function(data, index) {
-    var row = `
+    var row = `<tr>
         <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
         <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
-    `;
+    </tr>`;
         contentAdditionalTable += row;
     })
      var tableAdditional = `<div class="additional-table size-char-table"><table>
@@ -227,9 +227,7 @@ request.onload = function () {
   <tr class="first-tr">
        ${headerShippingTable}
   </tr>
-  <tr>
      ${contentAdditionalTable}
-   </tr>
   </tbody>
     </table></div>`;
 
