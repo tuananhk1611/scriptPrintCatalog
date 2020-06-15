@@ -207,14 +207,39 @@ request.onload = function () {
     </tr>
     </tbody>
     </table></div>`;
+   document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableShippingCost);
+   // Table Additional items
+    var contentAdditionalTable = "";
+    sizeData.map(function(data, index) {
+    var row = `<tr>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
+    </tr>`;
+        contentAdditionalTable += row;
+    })
+     var tableAdditional = `<div class="additional-table size-char-table"><table>
+    <thead>
+       <tr>
+         <td colspan="2">Additional items</td>
+        </tr>
+    </thead>
+  <tbody>
+  <tr class="first-tr">
+       ${headerShippingTable}
+  </tr>
+  <tr>
+     ${contentAdditionalTable}
+   </tr>
+  </tbody>
+    </table></div>`;
 
-          document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableShippingCost);
-          var productDescriptionPopup = document.querySelectorAll('.product-description-popup .detail-popup .description-popup')[0];
-          productDescriptionPopup.innerHTML = "";
-          productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
-          $('.product-description-popup').fadeIn();
-        });
-    } else {
+  document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableAdditional);       
+  var productDescriptionPopup = document.querySelectorAll('.product-description-popup .detail-popup .description-popup')[0];
+  productDescriptionPopup.innerHTML = "";
+  productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
+  $('.product-description-popup').fadeIn();
+  });
+} else {
         console.log('error');
     }
 }
