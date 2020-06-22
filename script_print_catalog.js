@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest();
 // Open a new connection, using the GET request on the URL endpoint
-request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
-
+// request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
+request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
 request.onload = function () {
     // Begin accessing JSON0 data here
     var data = JSON.parse(this.response);
@@ -96,7 +96,10 @@ request.onload = function () {
           var hasWhiteColor = productDescriptionData.size_data.filter(item => item.white_color_price !== 0).length > 0;
           var hasOtherColor = productDescriptionData.size_data.filter(item => item.other_color_price !== 0).length > 0;
           var productDescription = `
-  <h1 class="h2">${productDescriptionData.title}</h1>
+  <h1 class="h2">
+      ${productDescriptionData.title}
+      <span style="${productDescriptionData.group_display_name && productDescriptionData.group_display_name !== '' ? '' : 'display: none;'}" class="product-group-label ${productDescriptionData.group_display_name === 'Gold Base' ? 'gold' : 'silver'}">${productDescriptionData.group_display_name}</span>
+  </h1>
   <p class="description">
     ${productDescriptionData.product_description}
   </p>
