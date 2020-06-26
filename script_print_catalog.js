@@ -238,7 +238,7 @@ request.onload = function () {
   var productDescriptionPopup = document.querySelectorAll('.product-description-popup .detail-popup .description-popup')[0];
   productDescriptionPopup.innerHTML = "";
   productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
-  $('.product-description-popup').fadeIn();
+  $('.product-description-popup').fadeIn(100);
   });
 } else {
         console.log('error');
