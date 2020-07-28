@@ -189,12 +189,19 @@ request.onload = function () {
           document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableShippingTime);
           // Table Shipping Cost
           var contentShippingCostTable = "";
-          shippingProfileData.map(function(data) {
-            var row = `
-  <td>$${shippingData[data.zone_name].shipping_fee}</td>
-    `;
-            contentShippingCostTable += row;
-          })
+//           shippingProfileData.map(function(data) {
+//             var row = `
+//   <td>$${shippingData[data.zone_name].shipping_fee}</td>
+//     `;
+//             contentShippingCostTable += row;
+//           })
+          sizeData.map(function(data, index) {
+    var row = `<tr>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price : ""}</td>
+   </tr> `;
+        contentShippingCostTable += row;
+    });
           var tableShippingCost = `<div class="shipping-cost-table size-char-table"><table>
   <thead>
   <tr>
