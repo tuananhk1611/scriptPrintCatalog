@@ -105,6 +105,7 @@ request.onload = function () {
   </p>
   <p><strong>Shipping lines:</strong> USPS, Fedex, YunExpress.</p>
   <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day} - ${productDescriptionData.max_processing_day} bussiness days</p>
+  <p><strong>Restricted Ship-to countries:</strong> ${productDescriptionData.short_description}</p>
   <a style="${dataArwort.length === 1 && dataArwort[0] ? "" : "display:none"}" href="${urlDownloadArtWord}" class="download-template w-inline-block">
       Download Artwork Template
   </a>
