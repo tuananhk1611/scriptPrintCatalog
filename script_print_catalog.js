@@ -213,9 +213,7 @@ request.onload = function () {
   <tr class="first-tr">
   ${headerShippingTable}
     </tr>
-    <tr>
-      ${contentShippingCostTable}
-    </tr>
+     ${contentShippingCostTable}
     </tbody>
     </table></div>`;
    document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableShippingCost);
