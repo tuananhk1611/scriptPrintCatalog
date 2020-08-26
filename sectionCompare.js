@@ -20,20 +20,20 @@ if (window.sectionCompareData) {
 		return data;
 	};
 	Object.keys(dataCompare).map(function(item) {
-		var titleItem = `<h4 class="title-item">${item}<span class="toogle-icon"></span></h4>`;
+		var titleItem = `<h4 class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></h4>`;
 		var rowData = ``;
 		Object.keys(dataCompare[item]).map(function(dataItem) {
 			rowData += `<div class="content-row-item">
 			<div class="description-item">
 				<h5>${dataCompare[item][dataItem].title}</h5>
-				<p>${dataCompare[item][dataItem].subTitle}</p>
+				<p style="${dataCompare[item][dataItem].subTitle ? '' : 'display:none;'}">${dataCompare[item][dataItem].subTitle}</p>
 			</div>
 			<div class="info-item-wrapper">
 				${listInfoByBrand(dataCompare[item][dataItem])}
 			</div>
 		</div>`
 		});
-		tableCompareContent += titleItem + rowData;
+		tableCompareContent += titleItem + `<div class="row-item" data-target="${item}-content">${rowData}</div>`;
 	});
 	var contentSectionCompare = `<div id="section-compare" class="section-compare">
 		<div class="w-container">
@@ -52,6 +52,12 @@ if (window.sectionCompareData) {
 	var targetShowSectionCompare = window.sectionCompareData.targetShowSectionCompare;
 	if (document.querySelectorAll(targetShowSectionCompare).length > 0) {
 		document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML('beforebegin', contentSectionCompare);
-
+		$('.row-item').hide();
+		$('.row-item').eq(0).show();
+		$('.title-item').on('click', function() {
+  			var attrTarget = $(this).attr('data-target');
+  			$(this).toggleClass('isOpen');
+  			$(`.row-item[data-target="${attrTarget}"]`).slideToggle(200);
+		});
 	};
 }
