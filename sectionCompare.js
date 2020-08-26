@@ -51,7 +51,7 @@ if (window.sectionCompareData) {
 	</div>`;
 	var targetShowSectionCompare = window.sectionCompareData.targetShowSectionCompare;
 	if (document.querySelectorAll(targetShowSectionCompare).length > 0) {
-		document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML('beforebegin', contentSectionCompare);
+		document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML('afterbegin', contentSectionCompare);
 		$('.row-item').hide();
 		$('.title-item').eq(0).addClass('isOpen');
 		$('.row-item').eq(0).show();
