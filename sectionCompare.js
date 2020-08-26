@@ -53,6 +53,7 @@ if (window.sectionCompareData) {
 	if (document.querySelectorAll(targetShowSectionCompare).length > 0) {
 		document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML('beforebegin', contentSectionCompare);
 		$('.row-item').hide();
+		$('.title-item').eq(0).addClass('isOpen');
 		$('.row-item').eq(0).show();
 		$('.title-item').on('click', function() {
   			var attrTarget = $(this).attr('data-target');
