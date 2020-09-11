@@ -55,6 +55,7 @@ if (window.sectionCompareData) {
 		// $('.row-item').hide();
 		// $('.title-item').eq(0).addClass('isOpen');
 		// $('.row-item').eq(0).show();
+		$('.title-item').addClass('isOpen');
 		$('.title-item').on('click', function() {
   			var attrTarget = $(this).attr('data-target');
   			$(this).toggleClass('isOpen');
