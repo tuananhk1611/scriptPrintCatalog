@@ -52,9 +52,9 @@ if (window.sectionCompareData) {
 	var targetShowSectionCompare = window.sectionCompareData.targetShowSectionCompare;
 	if (document.querySelectorAll(targetShowSectionCompare).length > 0) {
 		document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML('afterbegin', contentSectionCompare);
-		$('.row-item').hide();
-		$('.title-item').eq(0).addClass('isOpen');
-		$('.row-item').eq(0).show();
+		// $('.row-item').hide();
+		// $('.title-item').eq(0).addClass('isOpen');
+		// $('.row-item').eq(0).show();
 		$('.title-item').on('click', function() {
   			var attrTarget = $(this).attr('data-target');
   			$(this).toggleClass('isOpen');
