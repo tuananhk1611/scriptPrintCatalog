@@ -133,7 +133,7 @@ request.onload = function () {
   <tr>
   <td>Size</td>
   <td style="${hasWhiteColor ? "" : "display: none;"}">${hasWhiteColor && hasOtherColor ? "White color" : "Price"}</td>
-  <td style="${hasOtherColor ? "" : "display: none;"}">${hasWhiteColor && hasOtherColor ? "Other color" : "Price"}</td>
+  <td style="${hasOtherColor ? "" : "display: none;"}">${hasWhiteColor && hasOtherColor ? `${injectData[dataCat].name.toUpperCase() === 'APPAREL' ? "Other color <sup>*</sup>" : "Other color"}` : "Price"}</td>
     </tr>
     </thead>
   <tbody>
