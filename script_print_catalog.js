@@ -27,7 +27,7 @@ request.onload = function () {
       injectData.map(function(item, indexCat) {
         listItem = "";
         item.list_base_product.map(function(product, indexProduct) {
-          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}">
+          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="product${item.id}${indexProduct}">
             <img src="${product.image_catalog}" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
               <p class="title">
@@ -80,6 +80,14 @@ request.onload = function () {
             }
        }).scroll();  
       $('.base-products').on('click', function(e) {
+          var productId = $(e.currentTarget).attr('id');
+          let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+          if (hashNav) {
+            window.location.href = hashNav + `#${productId}`
+          } else {
+            let nav = $(e.currentTarget).parents('.base-product-wrap').first().attr('id');
+            window.location.href = `#${nav}` + `#${productId}`
+          }
           var shippingZonesData = window.injectDataCatalog.result.shipping_zones;
           var dataCat = $(e.currentTarget).attr('data-cat');
           var dataIndex = $(e.currentTarget).attr('data-index');
@@ -246,10 +254,30 @@ request.onload = function () {
   productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
   $('.product-description-popup').fadeIn(100);
   });
+
+  // Jump to hastag
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+  
+  if (hashNav && hashProduct) {
+    window.location.href = hashNav + hashProduct
+    const scrollTop = $(hashProduct).position() ? $(hashProduct).position().top - 90 : 0
+    $('html, body').animate({scrollTop}, 1000)
+    $(hashProduct).trigger('click')
+  }
+  if (hashNav && !hashProduct) {
+    window.location.href = hashNav
+  }
 } else {
         console.log('error');
     }
 }
+
+$('body').on('click', '.button-close', () => {
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+  if (hashNav && hashProduct) {
+    window.history.pushState('', '/', window.location.pathname)
+  }
+})
 
 // Send request
 request.send()
