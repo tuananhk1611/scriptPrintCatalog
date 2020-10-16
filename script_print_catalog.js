@@ -27,7 +27,7 @@ request.onload = function () {
       injectData.map(function(item, indexCat) {
         listItem = "";
         item.list_base_product.map(function(product, indexProduct) {
-          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="product${item.id}${indexProduct}">
+          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="${product.title.toSlug()}-${item.id}${indexProduct}">
             <img src="${product.image_catalog}" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
               <p class="title">
@@ -81,7 +81,7 @@ request.onload = function () {
        }).scroll();
       $('.base-products').on('click', function(e) {
           var productId = $(e.currentTarget).attr('id');
-          let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+          let [allHash, hashNav] = window.location.hash.match(/(\#linkNav\d+)?/)
           if (hashNav) {
             window.location.href = hashNav + `#${productId}`
           } else {
@@ -256,13 +256,13 @@ request.onload = function () {
   });
 
   // Jump to hastag
-  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
 
   if (hashNav && hashProduct) {
     const scrollTopOriginal = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
     const loop = setInterval(() => {
         let scrollTop = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
-        $('html, body').animate({scrollTop}, 1000)
+        $('html, body').animate({scrollTop}, 500)
         if (scrollTopOriginal !== scrollTop) clearInterval(loop)
     }, 300)
     $(hashProduct).trigger('click')
@@ -276,11 +276,14 @@ request.onload = function () {
 }
 
 $('body').on('click', '.button-close', () => {
-  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
   if (hashNav && hashProduct) {
     window.history.pushState('', '/', window.location.pathname)
   }
 })
+String.prototype.toSlug = function () {
+    return this.toString().toLowerCase().replace(/\s/g,'-')
+}
 
 // Send request
 request.send()
