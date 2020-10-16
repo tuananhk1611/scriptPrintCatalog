@@ -259,10 +259,12 @@ request.onload = function () {
   let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
 
   if (hashNav && hashProduct) {
-    const scrollTop = $(hashProduct).position() ? $(hashProduct).position().top - 90 : 0
-    setTimeout(() => {
+    const scrollTopOriginal = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
+    const loop = setInterval(() => {
+        let scrollTop = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
         $('html, body').animate({scrollTop}, 1000)
-    }, 1500)
+        if (scrollTopOriginal !== scrollTop) clearInterval(loop)
+    }, 300)
     $(hashProduct).trigger('click')
   }
   if (hashNav && !hashProduct) {
