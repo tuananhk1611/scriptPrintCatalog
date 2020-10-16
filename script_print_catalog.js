@@ -57,7 +57,7 @@ request.onload = function () {
       });
       container.innerHTML = "";
       container.insertAdjacentHTML('beforeend', listContent);
-      $('.loading-section').fadeOut();  
+      $('.loading-section').fadeOut();
       $('.catalog').fadeIn();
        // Calcu height navi
       var navHeight = 0;
@@ -78,7 +78,7 @@ request.onload = function () {
                    }
                 });
             }
-       }).scroll();  
+       }).scroll();
       $('.base-products').on('click', function(e) {
           var productId = $(e.currentTarget).attr('id');
           let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
@@ -248,7 +248,7 @@ request.onload = function () {
   </tbody>
     </table></div>`;
 
-  document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableAdditional);       
+  document.querySelectorAll('.table-sizechart')[0].insertAdjacentHTML('beforeend', tableAdditional);
   var productDescriptionPopup = document.querySelectorAll('.product-description-popup .detail-popup .description-popup')[0];
   productDescriptionPopup.innerHTML = "";
   productDescriptionPopup.insertAdjacentHTML('beforeend', productDescription);
@@ -257,11 +257,12 @@ request.onload = function () {
 
   // Jump to hastag
   let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#product\d+)?/)
-  
+
   if (hashNav && hashProduct) {
-    window.location.href = hashNav + hashProduct
     const scrollTop = $(hashProduct).position() ? $(hashProduct).position().top - 90 : 0
-    $('html, body').animate({scrollTop}, 1000)
+    setTimeout(() => {
+        $('html, body').animate({scrollTop}, 1000)
+    }, 1500)
     $(hashProduct).trigger('click')
   }
   if (hashNav && !hashProduct) {
