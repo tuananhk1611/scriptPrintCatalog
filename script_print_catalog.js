@@ -27,7 +27,7 @@ request.onload = function () {
       injectData.map(function(item, indexCat) {
         listItem = "";
         item.list_base_product.map(function(product, indexProduct) {
-          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="${product.title.toSlug()}-${item.id}${indexProduct}">
+          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="${product.title.toSlug()}">
             <img src="${product.image_catalog}" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
               <p class="title">
