@@ -12,7 +12,7 @@ request.onload = function () {
       // Render navigator list
       var navContent = "";
       injectData.map(function(item, index) {
-        navContent += `<a id="linkNav${index}" href="#linkNav${item.id}" class="link-block-8 _3 w-inline-block">${item.name}</a>`
+        navContent += `<a id="${item.name.toSlug()}-${index}" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name}</a>`
       });
       var nav = document.querySelectorAll('.catalog-nav')[0];
       nav.innerHTML = "";
@@ -47,7 +47,7 @@ request.onload = function () {
             </div></div>
             `
         });
-        var text1 = `<div id="linkNav${item.id}" class="base-product-wrap"><div class="text-block-95">${item.name}</div>
+        var text1 = `<div id="${item.name.toSlug()}" class="base-product-wrap"><div class="text-block-95">${item.name}</div>
           <div class="w-layout-grid grid-17 _2 base-product-grid">
             ${listItem}
           </div>
@@ -81,12 +81,12 @@ request.onload = function () {
        }).scroll();
       $('.base-products').on('click', function(e) {
           var productId = $(e.currentTarget).attr('id');
-          let [allHash, hashNav] = window.location.hash.match(/(\#linkNav\d+)?/)
+          let [_, hashNav] = window.location.hash.split('#')
           if (hashNav) {
-            window.location.href = hashNav + `#${productId}`
+            window.location.href = `#${hashNav}#${productId}`
           } else {
             let nav = $(e.currentTarget).parents('.base-product-wrap').first().attr('id');
-            window.location.href = `#${nav}` + `#${productId}`
+            window.location.href = `#${nav}#${productId}`
           }
           var shippingZonesData = window.injectDataCatalog.result.shipping_zones;
           var dataCat = $(e.currentTarget).attr('data-cat');
@@ -256,19 +256,19 @@ request.onload = function () {
   });
 
   // Jump to hastag
-  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
+  let [_, hashNav, hashProduct] = window.location.hash.split('#')
 
   if (hashNav && hashProduct) {
-    const scrollTopOriginal = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
+    const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
     const loop = setInterval(() => {
-        let scrollTop = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
+        let scrollTop = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
         $('html, body').animate({scrollTop}, 500)
         if (scrollTopOriginal !== scrollTop) clearInterval(loop)
     }, 300)
-    $(hashProduct).trigger('click')
+    $(`#${hashProduct}`).trigger('click')
   }
   if (hashNav && !hashProduct) {
-    window.location.href = hashNav
+    window.location.href = `#${hashNav}`
   }
 } else {
         console.log('error');
@@ -276,13 +276,13 @@ request.onload = function () {
 }
 
 $('body').on('click', '.button-close', () => {
-  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
+  let [_, hashNav, hashProduct] = window.location.hash.split('#')
   if (hashNav && hashProduct) {
     window.history.pushState('', '/', window.location.pathname)
   }
 })
 String.prototype.toSlug = function () {
-    return this.toString().toLowerCase().replace(/\s/g,'-')
+    return this.toString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/\s/g,'-')
 }
 
 // Send request
