@@ -282,7 +282,11 @@ $('body').on('click', '.button-close', () => {
   }
 })
 String.prototype.toSlug = function () {
-    return this.toString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '').replace(/\s/g,'-')
+    return this
+      .toString()
+      .toLowerCase()
+      .replace(/\s/g,'-')
+      .replace(/[^a-zA-Z0-9]/g, '')
 }
 
 // Send request
