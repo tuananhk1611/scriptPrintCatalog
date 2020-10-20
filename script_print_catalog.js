@@ -286,7 +286,7 @@ String.prototype.toSlug = function () {
       .toString()
       .toLowerCase()
       .replace(/\s/g,'-')
-      .replace(/[^a-zA-Z0-9]/g, '')
+      .replace(/[^a-zA-Z0-9-]/g, '')
 }
 
 // Send request
