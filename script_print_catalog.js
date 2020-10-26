@@ -250,8 +250,8 @@ request.onload = function () {
 //           })
           sizeData.map(function(data, index) {
     var row = `<tr>
-        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price : ""}</td>
-        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price : ""}</td>
    </tr> `;
         contentShippingCostTable += row;
     });
@@ -273,8 +273,8 @@ request.onload = function () {
     var contentAdditionalTable = "";
     sizeData.map(function(data, index) {
     var row = `<tr>
-        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ?'' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
-        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
+        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
     </tr>`;
         contentAdditionalTable += row;
     })
