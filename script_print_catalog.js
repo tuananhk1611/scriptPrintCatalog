@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest();
 // Open a new connection, using the GET request on the URL endpoint
-// request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
-request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
+request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
+// request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
 request.onload = function () {
     // Begin accessing JSON0 data here
     var data = JSON.parse(this.response);
@@ -206,8 +206,8 @@ request.onload = function () {
 //           })
           sizeData.map(function(data, index) {
     var row = `<tr>
-        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price : ""}</td>
-        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price : ""}</td>
+        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].first_item_price : ""}</td>
+        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].first_item_price : ""}</td>
    </tr> `;
         contentShippingCostTable += row;
     });
@@ -229,8 +229,8 @@ request.onload = function () {
     var contentAdditionalTable = "";
     sizeData.map(function(data, index) {
     var row = `<tr>
-        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
-        <td>$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
+        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ?'' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 1)[0].additional_price : ""}</td>
+        <td style="${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? '' : 'display: none;'}">$${data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2).length > 0 && data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price ? data.shipping_rules.filter((rule) => rule.shipping_zone_id === 2)[0].additional_price : ""}</td>
     </tr>`;
         contentAdditionalTable += row;
     })
