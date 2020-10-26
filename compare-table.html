@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        .grid-container {
+            font-family: sans-serif;
+            max-width: 1100px;
+            min-width: 900px;
+            display: grid;
+            grid-column-gap: 0px;
+            grid-template-columns: 30px auto auto auto;
+            padding: 1px;
+        }
+
+
+        .grid-item {
+            overflow: hidden;
+            margin-left: 5px;
+            margin-right: 5px;
+            border-left: 1px solid #e8e8e8;
+            border-right: 1px solid #e8e8e8;
+            font-size: 13px;
+            text-align: left;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .grid-item:first-child {
+            border-left: none;
+            border-right: none;
+        }
+
+        .section-title-1 {
+            /* grid-column: 1 / 3; */
+            text-align: center;
+            writing-mode: vertical-rl;
+            /* vertical text */
+            line-height: 2rem;
+            /* center in div */
+            transform: rotate(180deg);
+            /* spin to orient as required */
+            background-color: papayawhip;
+            background-color: #E8E8E8;
+            font-size: 11px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .section-title-2 {
+            margin-top: 20px;
+            grid-row: 1 / span 4;
+            text-align: center;
+            writing-mode: vertical-rl;
+            /* vertical text */
+            line-height: 2rem;
+            /* center in div */
+            transform: rotate(180deg);
+            font-size: 11px;
+            /* spin to orient as required */
+            background-color: papayawhip;
+            background-color: #E8E8E8;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .header {
+            color: white;
+            border-left: 1px solid #e8e8e8;
+            border-right: 1px solid #e8e8e8;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            text-align: center;
+        }
+
+        .item {
+            display: grid;
+            grid-column-gap: 0px;
+            grid-template-columns: auto auto auto;
+            width: 100%;
+            padding: 20px 10px;
+            font-size: 10px;
+        }
+
+        .item span {
+            flex: 1 0 21%;
+        }
+
+        #header-gold {
+            background-color: #ffa833;
+        }
+
+        #header-silver {
+            background-color: #070081;
+        }
+
+        .category {
+            text-align: center;
+            margin-left: 0px;
+            border-left: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .category .item {
+            display: block;
+            padding: 20px 0px;
+        }
+
+        .category span {
+            font-weight: 700;
+        }
+
+        .category-first {
+            border-top: 1px solid #e8e8e8;
+            border-top-right-radius: 5px;
+        }
+
+        .category-last {
+            border-bottom-right-radius: 5px;
+        }
+
+        .footer {
+            display: block;
+            text-align: center;
+        }
+
+        @media screen and (max-width: 780px) {
+            #desktop {
+                display: none;
+            }
+            #mobile {
+              display: block !important;
+            }
+        }
+
+        #mobile {
+            display: none;
+        }
+
+        .mobile-header {
+            width: 100%;
+            float: left;
+            border-radius: 8px;
+            padding: 10px 0px;
+            text-align: center;
+        }
+
+        .mobile-header span {
+            font-weight: 700;
+            font-size: 14px;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        .mobile-main {
+            padding: 10px 5px;
+            width: 100%;
+            float: left;
+            border-radius: 8px;
+        }
+
+        .mobile-header span {
+            font-size: 13px;
+        }
+
+        #mobile-header-gold span {
+            color: #ffa833;
+        } 
+        
+        #mobile-header-silver span {
+            color: #070081;
+        }
+        .mobile-content {
+            width: 100%;
+            float: left;
+        }
+        .mobile-content-row {
+            display: table;
+            width: 100%;
+            font-size: 10px;
+            float: left;
+            padding: 15px 0px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        .mobile-content-row span {
+            font-weight: 700;
+            font-size: 12px;
+        } 
+        .mobile-content-row p {
+            margin-top: 0px;
+        }
+        .column {
+            float: left;
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mobile">
+        <div>
+            <div class="mobile-header" id="header-gold">
+                <span>gold base</span>
+            </div>
+            <div class="mobile-main">
+                <div class="mobile-header" id="mobile-header-gold">
+                    <span>Số lượng sản phẩm</span>
+                </div>
+                <div class="mobile-content">
+                    <div class="mobile-content-row">
+                        <div class="column">
+                            <span>501-1000</span>
+                        </div>
+                        <div class="column">
+                            <p  style="font-size: 12px">Hoàn <strong>$0.50</strong> /sản phẩm</p>
+                        </div>
+                    </div>
+                    <div class="mobile-content-row">
+                        <div class="column">
+                            <span>1001+</span>
+                        </div>
+                        <div class="column">
+                            <p style="font-size: 12px">Hoàn <strong>$1.00</strong> /sản phẩm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-header gold-content" id="mobile-header-gold">
+                    <span>Sản phẩm</span>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="mobile-header" id="header-silver">
+                <span>silver base</span>
+            </div>
+            <div class="mobile-main">
+                <div class="mobile-content">
+                    <div class="mobile-content-row">
+                        <div class="column">
+                            <span>501-1000</span>
+                        </div>
+                        <div class="column">
+                            <p  style="font-size: 12px">Hoàn <strong>$0.25</strong> /sản phẩm</p>
+                        </div>
+                    </div>
+                    <div class="mobile-content-row">
+                        <div class="column">
+                            <span>1001+</span>
+                        </div>
+                        <div class="column">
+                            <p>  style="font-size: 12px"Hoàn <strong>$0.50</strong> /sản phẩm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mobile-header silver-content" id="mobile-header-silver">
+                    <span>Sản phẩm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="grid-container" id="desktop">
+        <div class="grid-item" style="border:none">
+            <span></span>
+        </div>
+        <div class="grid-item" style="border:none">
+            <span></span>
+        </div>
+        <div class="grid-item header" id="header-gold">
+            <span>gold base</span>
+        </div>
+        <div class="grid-item header" id="header-silver">
+            <span>silver base</span>
+        </div>
+        <div class="section-title-1">
+            <span>Sản phẩm</span>
+        </div>
+        <div class="section-title-2">
+            <span>Số lượng sản phẩm</span>
+        </div>
+        <div class="grid-item category"
+            style="margin-top: 20px; border-top: 1px solid #e8e8e8; border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+            <div class="item">
+                <span>501-1000</span>
+            </div>
+        </div>
+        <div class="grid-item">
+            <div class="item footer">
+                <span>Hoàn $0.50 /sản phẩm</span>
+            </div>
+        </div>
+        <div class="grid-item">
+            <div class="item footer">
+                <span>Hoàn $0.25 /sản phẩm</span>
+            </div>
+        </div>
+        <div class="grid-item category">
+            <div class="item">
+                <span>1001+</span>
+            </div>
+        </div>
+        <div class="grid-item" style="border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+            <div class="item footer">
+                <span>Hoàn $1.00 /sản phẩm</span>
+            </div>
+        </div>
+        <div class="grid-item" style=" border-bottom-right-radius: 5px; border-bottom-left-radius: 5px;">
+            <div class="item footer">
+                <span>Hoàn $0.50 /sản phẩm</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var request = new XMLHttpRequest();
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
+    // request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+            let content = "";
+            const data = JSON.parse(this.response).result;
+            const rowSpan1 = data.list_category.length;
+            if (window.innerWidth < 780) {
+                data.list_category.forEach((category, i) => {
+                    category.list_base_product.filter(product => product.group_name == "Gold Base").forEach(product => {
+                        content += `<div class="mobile-content-row">
+                        <div class="column">
+                            <span>${category.name}</span>
+                        </div><div class="column">`;
+                    category.list_base_product.map(product => {
+                        content += `  
+                            <p>${product.title }</p>`
+                       
+                    });
+                    content += `</div>
+                    </div>`
+                    })    
+                });
+
+                document.querySelector('.gold-content').insertAdjacentHTML('afterend', content)
+                
+                data.list_category.forEach((category, i) => {
+                    category.list_base_product.filter(product => product.group_name == "Silver Base").forEach(product => {
+                        content += `<div class="mobile-content-row">
+                        <div class="column">
+                            <span>${category.name}</span>
+                        </div><div class="column">`;
+                    category.list_base_product.map(product => {
+                        content += `  
+                            <p>${product.title }</p>`
+                       
+                    });
+                    content += `</div>
+                    </div>`
+                    })    
+                });
+
+                document.querySelector('.silver-content').insertAdjacentHTML('afterend', content)
+            } else {
+                data.list_category.forEach((category, i) => {
+                    content += `<div class="grid-item category ${!i ? 'category-first' : i == rowSpan1 - 1 ? 'category-last' : ''}"><span>${category.name}</span></div>`
+                    content += `<div class="grid-item"><div class="item">`
+                    category.list_base_product.filter(product => product.group_name == "Gold Base").forEach(product => {
+                        content += `<span>${product.title}</span>`
+                    });
+                    content += `</div></div>`
+                    content += `<div class="grid-item"><div class="item">`
+                    category.list_base_product.filter(product => product.group_name == "Silver Base").forEach(product => {
+                        content += `<span>${product.title}</span>`
+                    });
+                    content += `</div></div>`
+                });
+
+                document.querySelector('.section-title-1').insertAdjacentHTML('afterend', content)
+                document.querySelector('.section-title-1').style.gridRow = `2/ span ${rowSpan1}`
+                document.querySelector('.section-title-2').style.gridRow = `${rowSpan1 + 2} / span 2`
+                let div1 = "";
+                // console.log(document.querySelector('.section-title-1').offsetWidth + )
+                div1 += `<div id="shadow" style="
+                    position: absolute;
+                    top: ${document.querySelector('.section-title-1').offsetTop}px;
+                    width: calc(10px + ${document.querySelector('.section-title-1').offsetWidth + document.querySelector('.category').offsetWidth}px);
+                    height: ${document.querySelector('.section-title-1').offsetHeight}px;
+                    box-shadow: -7px -3px 11px -7px #333;
+                    border-radius: 8px;
+                "> </div>`
+               document.body.insertAdjacentHTML('beforeend', div1)
+            }
+
+        }
+    }
+    request.send();
+</script>
+
+</html>

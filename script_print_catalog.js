@@ -12,11 +12,35 @@ request.onload = function () {
       // Render navigator list
       var navContent = "";
       injectData.map(function(item, index) {
-        navContent += `<a id="${item.name.toSlug()}-${index}" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name}</a>`
+        navContent += `<a id="linkNav${index}" href="#linkNav${item.id}" class="link-block-8 _3 w-inline-block ${index == injectData.length - 1 ? 'w-inline-block-last' : ''}">${item.name}</a>`
       });
+      
+      var filterContent = "";
+      filterContent += `<div style="width: 100%; margin-top: 50px; height: 100px;background-color: #e8e8e8; padding: 10px; border-radius: 10px">
+        <label>Cashback tier</label>
+        <select class="product_base_filter" style="
+          width: 100%;
+          border:0px;
+          outline:0px;
+          background-color: #e8e8e8; 
+          font-size: 16px
+          font-weight: bold
+        ">
+          <option value="Gold Base">Gold Base</option>
+          <option value="Silver Base">Silver Base</option>
+          <option value="all" selected>All</option>
+        </select>
+      </div>`
       var nav = document.querySelectorAll('.catalog-nav')[0];
       nav.innerHTML = "";
       document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', navContent);
+
+      document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', filterContent);
+      $('.catalog-nav').css('border', 'none');
+      $('.w-inline-block').css('border-left', '1px solid #ebebeb')
+      $('.w-inline-block').css('border-right', '1px solid #ebebeb')
+      $('.w-inline-block-last').css({ 'border-bottom-left-radius': '10px'})
+      $('.w-inline-block-last').css('border-bottom-right-radius', '10px')
 //       $('.catalog-nav a').on('click', function() {
 //          $('.catalog-nav a').removeClass('w--current');
 //    			 $(this).toggleClass('w--current');
@@ -27,9 +51,16 @@ request.onload = function () {
       injectData.map(function(item, indexCat) {
         listItem = "";
         item.list_base_product.map(function(product, indexProduct) {
-          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" id="${product.title.toSlug()}">
+          listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" group-name="${product.group_name}" id="${product.title.toSlug()}">
             <img src="${product.image_catalog}" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
+              <p>
+                <span style="   
+                 font-weight: 600;
+                border-radius: 3px;
+                background: ${product.group_name == "Gold Base" ? "#FFD600" : "#DBDFE1"};
+                padding: 2px 5px;">${product.group_display_name}</span>  
+              </p>
               <p class="title">
                 <strong class="bold">${product.title}</strong>
               </p>
@@ -47,7 +78,7 @@ request.onload = function () {
             </div></div>
             `
         });
-        var text1 = `<div id="${item.name.toSlug()}" class="base-product-wrap"><div class="text-block-95">${item.name}</div>
+        var text1 = `<div id="linkNav${item.id}" class="base-product-wrap"><div class="text-block-95">${item.name}</div>
           <div class="w-layout-grid grid-17 _2 base-product-grid">
             ${listItem}
           </div>
@@ -59,8 +90,21 @@ request.onload = function () {
       container.insertAdjacentHTML('beforeend', listContent);
       $('.loading-section').fadeOut();
       $('.catalog').fadeIn();
+
+      // Filter
+      $('.product_base_filter').on('change', function(e) {
+        const filterValue = e.target.value;
+        $('.base-products').each(function(i, obj) {
+            if (filterValue == "all" || $(this).attr('group-name') == filterValue) {
+              $(this).css('display', 'block')
+            } else {
+              $(this).css('display', 'none')
+            }
+        });
+      })
+
        // Calcu height navi
-      var navHeight = 0;
+      var navHeight = 110;
       $('.catalog .navi .link-block-8').each(function(index, el) {
         navHeight += $(el).outerHeight();
       })
@@ -81,12 +125,12 @@ request.onload = function () {
        }).scroll();
       $('.base-products').on('click', function(e) {
           var productId = $(e.currentTarget).attr('id');
-          let [_, hashNav] = window.location.hash.split('#')
+          let [allHash, hashNav] = window.location.hash.match(/(\#linkNav\d+)?/)
           if (hashNav) {
-            window.location.href = `#${hashNav}#${productId}`
+            window.location.href = hashNav + `#${productId}`
           } else {
             let nav = $(e.currentTarget).parents('.base-product-wrap').first().attr('id');
-            window.location.href = `#${nav}#${productId}`
+            window.location.href = `#${nav}` + `#${productId}`
           }
           var shippingZonesData = window.injectDataCatalog.result.shipping_zones;
           var dataCat = $(e.currentTarget).attr('data-cat');
@@ -256,19 +300,19 @@ request.onload = function () {
   });
 
   // Jump to hastag
-  let [_, hashNav, hashProduct] = window.location.hash.split('#')
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
 
   if (hashNav && hashProduct) {
-    const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
+    const scrollTopOriginal = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
     const loop = setInterval(() => {
-        let scrollTop = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
+        let scrollTop = $(hashProduct).offset() ? $(hashProduct).offset().top - 90 : 0
         $('html, body').animate({scrollTop}, 500)
         if (scrollTopOriginal !== scrollTop) clearInterval(loop)
     }, 300)
-    $(`#${hashProduct}`).trigger('click')
+    $(hashProduct).trigger('click')
   }
   if (hashNav && !hashProduct) {
-    window.location.href = `#${hashNav}`
+    window.location.href = hashNav
   }
 } else {
         console.log('error');
@@ -276,17 +320,13 @@ request.onload = function () {
 }
 
 $('body').on('click', '.button-close', () => {
-  let [_, hashNav, hashProduct] = window.location.hash.split('#')
+  let [allHash, hashNav, hashProduct] = window.location.hash.match(/(\#linkNav\d+)?(\#(\w+-?)+)?/)
   if (hashNav && hashProduct) {
     window.history.pushState('', '/', window.location.pathname)
   }
 })
 String.prototype.toSlug = function () {
-    return this
-      .toString()
-      .toLowerCase()
-      .replace(/\s/g,'-')
-      .replace(/[^a-zA-Z0-9-]/g, '')
+    return this.toString().toLowerCase().replace(/\s/g,'-')
 }
 
 // Send request
