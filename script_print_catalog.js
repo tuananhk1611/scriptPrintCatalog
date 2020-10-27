@@ -205,7 +205,7 @@ request.onload = function() {
                     (item) => item.other_color_price !== 0
                 ).length > 0
             var productDescription = `
-  <h1 class="h2">
+  <h1 title="${productDescriptionData.group_name == 'Gold Base' ? ' For each item sold within Gold Base product group, you can receive up to $1 cashback.' : ' For each item sold within Silver Base product group, you can receive up to $0.5 cashback.' }" class="h2">
       ${productDescriptionData.title}
       <span style="${
                 productDescriptionData.group_display_name &&
