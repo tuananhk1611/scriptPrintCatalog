@@ -18,21 +18,18 @@ request.onload = function() {
         })
 
         var filterContent = ''
-        filterContent += `<div style="width: 100%; margin-top: 50px; height: 100px;background-color: #e8e8e8; padding: 10px; border-radius: 10px">
-        <label>Cashback tier</label>
-        <select class="product_base_filter" style="
-          width: 100%;
-          border:0px;
-          outline:0px;
-          background-color: #e8e8e8; 
-          font-size: 16px
-          font-weight: bold
-        ">
-          <option value="Gold Base">Gold Base</option>
-          <option value="Silver Base">Silver Base</option>
-          <option value="all" selected>All</option>
-        </select>
-      </div>`
+        filterContent += `<div id="select-area" style="width: 100%; margin-top: 50px; display: flex;align-items: center; justify-content: space-between; background-color: #e8e8e8; padding: 10px 20px; border-radius: 10px">
+        <div style="display: grid">
+        <label style="font-weight: 400; font-size: 12px; color: #5E6A6E">Cashback tier</label>
+        <span id="select-value" style="font-weight: 600">All</span>
+        </div>
+        <svg style="width: 15px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
+        </div>
+        <div class="navi _2 catalog-nav" id="select_options" style="overflow: block; display:none; margin-top:5px;  height: 404px;">
+        <a class="link-block-8 _3 w-inline-block s-option" value="all" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
+        <a class="link-block-8 _3 w-inline-block  s-option" value="Gold Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);">Gold Base</a>
+        <a class="link-block-8 _3 w-inline-block s-option" value="Silver Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);border-bottom: 1px solid rgb(235, 235, 235); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">Silver Base</a>
+        </div></div>`
         var nav = document.querySelectorAll('.catalog-nav')[0]
         nav.innerHTML = ''
         document
@@ -64,7 +61,7 @@ request.onload = function() {
                     product.image_catalog
                 }" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
-              <p>
+              <p title="${product.group_name == 'Gold Base' ? ' For each item sold within Gold Base product group, you can receive up to $1 cashback.' : ' For each item sold within Silver Base product group, you can receive up to $0.5 cashback.' }">
                 <span style="   
                  font-weight: 600;
                 border-radius: 3px;
@@ -106,10 +103,13 @@ request.onload = function() {
         container.insertAdjacentHTML('beforeend', listContent)
         $('.loading-section').fadeOut()
         $('.catalog').fadeIn()
-
+        $('#select-area').on('click', function() {
+            const open = $('#select_options').css('display');
+            $('#select_options').css("display", `${open =='none' ? 'block' : 'none'}`)
+        })
         // Filter
-        $('.product_base_filter').on('change', function(e) {
-            const filterValue = e.target.value
+        $('.s-option').on('click', function(e) {
+            const filterValue =  $(this).attr('value');
             $('.base-products').each(function(i, obj) {
                 if (filterValue == 'all' || $(this).attr('group-name') == filterValue) {
                     $(this).css('display', 'block')
@@ -117,6 +117,8 @@ request.onload = function() {
                     $(this).css('display', 'none')
                 }
             })
+            $('#select-value').text(filterValue)
+            $('#select_options').css('display', 'none')
         })
 
         // Calcu height navi
