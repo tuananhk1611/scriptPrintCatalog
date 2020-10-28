@@ -26,7 +26,7 @@ request.onload = function() {
         <svg style="width: 15px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
         </div>
         <div class="navi _2 catalog-nav" id="select_options" style="overflow: block; display:none; margin-top:5px;  height: 404px;">
-        <a class="link-block-8 _3 w-inline-block s-option" value="all" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
+        <a class="link-block-8 _3 w-inline-block s-option" value="All" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
         <a class="link-block-8 _3 w-inline-block  s-option" value="Gold Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);">Gold Base</a>
         <a class="link-block-8 _3 w-inline-block s-option" value="Silver Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);border-bottom: 1px solid rgb(235, 235, 235); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">Silver Base</a>
         </div></div>`
@@ -40,6 +40,7 @@ request.onload = function() {
             .querySelectorAll('.catalog-nav')[0]
             .insertAdjacentHTML('beforeend', filterContent)
         $('.catalog-nav').css('border', 'none')
+        $('.catalog-nav').css('height', '800px')
         $('.w-inline-block').css('border-left', '1px solid #ebebeb')
         $('.w-inline-block').css('border-right', '1px solid #ebebeb')
         $('.w-inline-block-last').css({ 'border-bottom-left-radius': '10px' })
@@ -111,7 +112,7 @@ request.onload = function() {
         $('.s-option').on('click', function(e) {
             const filterValue =  $(this).attr('value');
             $('.base-products').each(function(i, obj) {
-                if (filterValue == 'all' || $(this).attr('group-name') == filterValue) {
+                if (filterValue == 'All' || $(this).attr('group-name') == filterValue) {
                     $(this).css('display', 'block')
                 } else {
                     $(this).css('display', 'none')
@@ -122,7 +123,7 @@ request.onload = function() {
         })
 
         // Calcu height navi
-        var navHeight = 110
+        var navHeight = 410
         $('.catalog .navi .link-block-8').each(function(index, el) {
             navHeight += $(el).outerHeight()
         })
