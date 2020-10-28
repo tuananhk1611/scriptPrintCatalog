@@ -20,7 +20,7 @@ request.onload = function() {
         var filterContent = ''
         filterContent += `<div id="select-area" style="width: 100%; margin-top: 50px; display: flex;align-items: center; justify-content: space-between; background-color: #e8e8e8; padding: 10px 20px; border-radius: 10px">
         <div style="display: grid">
-        <label style="font-weight: 400; font-size: 12px; color: #5E6A6E">Cashback tier</label>
+        <label style="font-weight: 400; font-size: 16px; color: #5E6A6E">Cashback tier</label>
         <span id="select-value" style="font-weight: 600">All</span>
         </div>
         <svg style="width: 15px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
