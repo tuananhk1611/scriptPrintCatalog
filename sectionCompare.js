@@ -1,8 +1,8 @@
-if (window.sectionCompareData1) {
-  var sectionCompareheading = window.sectionCompareData1.sectionCompareheading;
-  var sectionCompareSubHeading = window.sectionCompareData1.sectionCompareSubHeading;
-  var dataBrand = window.sectionCompareData1.dataBrand;
-  var dataCompare = window.sectionCompareData1.dataCompare;
+if (window.sectionCompareData) {
+  var sectionCompareheading = window.sectionCompareData.sectionCompareheading;
+  var sectionCompareSubHeading = window.sectionCompareData.sectionCompareSubHeading;
+  var dataBrand = window.sectionCompareData.dataBrand;
+  var dataCompare = window.sectionCompareData.dataCompare;
   var listBrand = "";
   var optionListBrand = "";
   Object.keys(dataBrand.title).map(function (key) {
@@ -99,7 +99,7 @@ if (window.sectionCompareData1) {
       <div>
     </div>
   </div>`;
-  var targetShowSectionCompare = window.sectionCompareData1.targetShowSectionCompare;
+  var targetShowSectionCompare = window.sectionCompareData.targetShowSectionCompare;
   if (document.querySelectorAll(targetShowSectionCompare).length > 0) {
     document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML("afterbegin", contentSectionCompare);
     document.querySelectorAll(targetShowSectionCompare)[0].insertAdjacentHTML("afterbegin", contentSectionCompareMobile);
