@@ -116,7 +116,6 @@ if (window.sectionCompareData) {
     $(document).ready(function () {
       $(".select-brand").change(function () {
         var selectedBrand = $(this).children("option:selected").val();
-        console.log(selectedBrand);
         $(".section-compare-mobile .w-container .section-compare-content .section-compare-table").remove();
         $( `<div class="section-compare-table">${getTableCompareContent(selectedBrand)}</div>` ).insertAfter( ".section-compare-mobile .w-container .section-compare-content .section-compare-logo-branch" );
       });
