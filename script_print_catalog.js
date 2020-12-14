@@ -1,7 +1,7 @@
 var request = new XMLHttpRequest()
 // Open a new connection, using the GET request on the URL endpoint
-// request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true)
-request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
+request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true)
+// request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
 request.onload = function() {
     // Begin accessing JSON0 data here
     var data = JSON.parse(this.response)
