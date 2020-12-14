@@ -156,6 +156,7 @@ request.onload = function() {
             var productId = $(e.currentTarget).attr('id')
             let [_, hashNav] = window.location.hash.split('#')
             if (hashNav) {
+                hashNav = decodeURIComponent(hashNav).split('#')[0] || hashNav
                 window.location.href = `#${hashNav}#${productId}`
             } else {
                 let nav = $(e.currentTarget)
