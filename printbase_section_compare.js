@@ -5,6 +5,16 @@ if (window.sectionCompareData) {
     var dataCompare = window.sectionCompareData.dataCompare;
     var listBrand = "";
     var optionListBrand = "";
+    dataBrand.logo = {
+      printBase:
+        "https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fdc6235833b9c07d790003e_Printbase%401x.svg",
+      teeChip:
+        "https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fdc6235245e6278ae3e18e7_Teechip%401x.svg",
+      gearLaunch:
+        "https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fdc623624c548138d9d73d1_Gear%401x.svg",
+      moteefe:
+        "https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fdc6235015e9e2f4a19acb9_Motee%401x.svg",
+    }
     Object.keys(dataBrand.logo).map(function(key) {
       listBrand += `<figure class="logo-brand logo-${key}"><img src="${dataBrand.logo[key]}" alt="logo-${key}" /></figure>`;
     });
@@ -120,4 +130,4 @@ if (window.sectionCompareData) {
         $( `<div class="section-compare-table">${getTableCompareContent(selectedBrand)}</div>` ).insertAfter( ".section-compare-mobile .w-container .section-compare-content .section-compare-logo-branch" );
       });
     });
-  }
+  } 
