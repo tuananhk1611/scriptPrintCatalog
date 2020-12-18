@@ -5,8 +5,8 @@ if (window.sectionCompareData) {
     var dataCompare = window.sectionCompareData.dataCompare;
     var listBrand = "";
     var optionListBrand = "";
-    Object.keys(dataBrand.title).map(function (key) {
-      listBrand += `<h4 class="logo-brand">${dataBrand.title[key]}</h4>`;
+    Object.keys(dataBrand.logo).map(function(key) {
+      listBrand += `<figure class="logo-brand logo-${key}"><img src="${dataBrand.logo[key]}" alt="logo-${key}" /></figure>`;
     });
     var tableCompareContent = ``;
     var listInfoByBrand = function (listBrand) {
@@ -89,7 +89,7 @@ if (window.sectionCompareData) {
           <div class="section-compare-logo-branch">
             <div class="spacing-block"></div>
             <div class="logo-wrap">
-              <h4 class="logo-brand">PrintBase</h4>
+            <figure class="logo-brand logo-printBase"><img src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fdc6235833b9c07d790003e_Printbase%401x.svg" alt="logo-printBase" /></figure>
               <select class="logo-brand select-brand">${optionListBrand}</select>
             </div>
           </div>
@@ -121,4 +121,3 @@ if (window.sectionCompareData) {
       });
     });
   }
-  
