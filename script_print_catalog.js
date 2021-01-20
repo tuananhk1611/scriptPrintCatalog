@@ -139,7 +139,7 @@ request.onload = function() {
                         value
                     ) {
                         var id = $(value).attr('id')
-                        if ($(value).position().top <= windscroll + 10) {
+                        if ($(value).position().top <= windscroll + 100) {
                             if (
                                 $(`.catalog-nav a[href="#${id}"]`) &&
                                 $(`.catalog-nav a[href="#${id}"]`).length > 0
