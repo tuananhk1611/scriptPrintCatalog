@@ -336,7 +336,7 @@ request.onload = function () {
             productDescriptionPopup.insertAdjacentHTML('beforeend', artWork)
             $('.product-description-popup').fadeIn(100)
         })
-        let [_, hashNav, hashProduct] = window.location.hash.split('-product-is-')
+        let [hashNav, hashProduct] = window.location.hash.replace('#').split('-product-is-')
         if (hashNav && hashProduct) {
             const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
             const loop = setInterval(() => {
