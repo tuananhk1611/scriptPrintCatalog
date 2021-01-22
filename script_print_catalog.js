@@ -123,13 +123,13 @@ request.onload = function () {
         }).scroll()
         $('.base-products').on('click', function (e) {
             var productId = $(e.currentTarget).attr('id')
-            let [hashNav] = window.location.hash.replace('#', '').split('-product-is-')
+            let [hashNav] = window.location.hash.replace('#', '').split('/')
             if (hashNav) {
                 hashNav = decodeURIComponent(hashNav).split('#')[0] || hashNav
-                window.location.href = `#${hashNav}-product-is-${productId}`
+                window.location.href = `#${hashNav}/${productId}`
             } else {
                 let nav = $(e.currentTarget).parents('.base-product-wrap').first().attr('id')
-                window.location.href = `#${nav}-product-is-${productId}`
+                window.location.href = `#${nav}/${productId}`
             }
             var shippingZonesData = window.injectDataCatalog.result.shipping_zones
             var dataCat = $(e.currentTarget).attr('data-cat')
@@ -336,7 +336,7 @@ request.onload = function () {
             productDescriptionPopup.insertAdjacentHTML('beforeend', artWork)
             $('.product-description-popup').fadeIn(100)
         })
-        let [hashNav, hashProduct] = window.location.hash.replace('#').split('-product-is-')
+        let [hashNav, hashProduct] = window.location.hash.replace('#').split('/')
         if (hashNav && hashProduct) {
             const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
             const loop = setInterval(() => {
@@ -359,7 +359,7 @@ $('body').on('click', '.button-close', () => {
     closeModal();
 })
 var closeModal = function () {
-    let [hashNav, hashProduct] = window.location.hash.replace('#', '').split('-product-is-')
+    let [hashNav, hashProduct] = window.location.hash.replace('#', '').split('/')
     if (hashNav && hashProduct) {
         window.history.pushState('', '/', window.location.pathname)
     }
