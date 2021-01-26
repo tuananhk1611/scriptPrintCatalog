@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <style>
+        .div-block-265 {
+            padding-bottom: 30px;
+            font-family: 'DM Sans', sans-serif;
+            text-align: center;
+        }
+
+        .div-block-265.cb {
+            font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        .section-3 {
+            padding: 100px 3% 50px;
+            background-color: #f7f8f8;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#f7f8f8), to(#fff));
+            background-image: linear-gradient(180deg, #f7f8f8, #fff);
+            -webkit-transition: opacity 500ms cubic-bezier(.801, -.009, .298, 1.003);
+            transition: opacity 500ms cubic-bezier(.801, -.009, .298, 1.003);
+            cursor: pointer;
+        }
+
+        .section-3._2 {
+            padding-top: 80px;
+        }
+
+        .cashback {
+            width: 100%;
+            max-width: 1200px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-right: 38px;
+            padding-bottom: 40px;
+            padding-left: 38px;
+            border-radius: 16px;
+            background-color: #fff;
+            box-shadow: 0 17px 20px 5px rgba(0, 0, 0, 0.03);
+        }
+
+        .w-layout-grid {
+            display: -ms-grid;
+            display: grid;
+            grid-auto-columns: 1fr;
+            -ms-grid-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            -ms-grid-rows: auto auto;
+            grid-template-rows: auto auto;
+            grid-row-gap: 16px;
+            grid-column-gap: 16px;
+        }
+
+        .grid-21 {
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            -ms-grid-columns: 0.5fr 1.5fr 1fr;
+            grid-template-columns: 0.5fr 1.5fr 1fr;
+            -ms-grid-rows: auto auto auto auto auto auto auto;
+            grid-template-rows: auto auto auto auto auto auto auto;
+        }
+
+        .block-title {
+            padding: 30px 20px 30px 32px;
+            border-top: 1px solid #e3e7e8;
+            border-radius: 1px;
+        }
+
+        .block-title.header {
+            padding-top: 24px;
+            padding-bottom: 24px;
+            border-top-style: none;
+        }
+
+        .title-block {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            line-height: 24px;
+            font-weight: 700;
+        }
+
+        .block-content {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            padding-top: 32px;
+            padding-bottom: 32px;
+            padding-left: 40px;
+            border-top: 1px solid #e3e7e8;
+            border-right: 1px solid #e3e7e8;
+        }
+
+        .block-content._1 {
+            display: block;
+            padding-left: 67px;
+            border-right-style: none;
+        }
+
+        .block-content._1._2 {
+            border-top-style: none;
+        }
+
+        .block-content._2 {
+            padding: 24px 0px 24px 10px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            border-top-style: none;
+        }
+
+        .block-content._3 {
+            padding-top: 24px;
+            padding-bottom: 24px;
+            padding-left: 40px;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            border-top-style: none;
+            border-right-style: none;
+        }
+
+        .product-list {
+            padding-right: 0px;
+            padding-left: 40px;
+            font-family: 'DM Sans', sans-serif;
+            color: rgba(19, 31, 55, 0.7);
+            font-size: 15px;
+            line-height: 26px;
+        }
+
+        .product-list._1 {
+            width: 161px;
+            padding-left: 0px;
+            font-family: 'DM Sans', sans-serif;
+            color: rgba(19, 31, 55, 0.7);
+            font-weight: 400;
+        }
+
+        .product-list._2 {
+            padding-left: 0px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .arial-24 {
+            margin-right: auto;
+            margin-left: auto;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            line-height: 34px;
+        }
+
+        .arial-24.goldbase {
+            margin-top: 10px;
+        }
+
+
+        .arial-15 {
+            margin-top: 4px;
+            margin-bottom: 4px;
+            font-size: 15px;
+            line-height: 25px;
+            font-weight: 400;
+        }
+
+        .arial-15._2 {
+            margin-bottom: 30px;
+        }
+
+        .arial-15._3 {
+            font-size: 20px;
+        }
+
+        .w-tabs {
+            display: none;
+        }
+
+        .cashback {
+            display: block;
+        }
+
+        .quantity {
+            padding-bottom: 16px;
+            border-radius: 12px;
+            background-color: #f7f8f8;
+        }
+
+        .div-block-264 {
+            padding: 16px 20px 16px 32px;
+        }
+
+        .div-block-264.header {
+            border-style: none none solid;
+            border-width: 1px;
+            border-color: #e3e7e8;
+        }
+
+        .div-block-264.header._2 {
+            padding-left: 67px;
+        }
+
+        .div-block-264.header._3 {
+            padding-left: 40px;
+        }
+
+        .div-block-264._2 {
+            padding-left: 67px;
+        }
+
+        .div-block-264._3 {
+            padding-left: 40px;
+        }
+
+        .text-block-101 {
+            font-family: 'DM Sans', sans-serif;
+            color: #0096ed;
+            font-size: 20px;
+        }
+
+        .text-span-4 {
+            color: #a2a4a5;
+            font-size: 15px;
+        }
+
+        .grid-22 {
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            -ms-grid-columns: 0.5fr 1.5fr 1fr;
+            grid-template-columns: 0.5fr 1.5fr 1fr;
+        }
+
+
+        .head-title {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .w-tab-link {
+            position: relative;
+            display: inline-block;
+            vertical-align: top;
+            text-decoration: none;
+            padding: 9px 30px;
+            text-align: left;
+            cursor: pointer;
+            color: #222222;
+            background-color: #dddddd;
+        }
+
+        .w-inline-block {
+            max-width: 100%;
+            display: inline-block;
+        }
+
+        @media screen and (max-width: 479px) {
+            .w-tabs {
+                display: block;
+                position: relative;
+            }
+
+            .w-tabs:before,
+            .w-tabs:after {
+                content: " ";
+                display: table;
+                grid-column-start: 1;
+                grid-row-start: 1;
+                grid-column-end: 2;
+                grid-row-end: 2;
+            }
+
+            .w-tabs:after {
+                clear: both;
+            }
+
+            .w-tab-menu {
+                position: relative;
+            }
+
+            .cashback {
+                display: none;
+            }
+
+            .tabs-menu-5 {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                padding: 23px 24px 24px;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .tab-cashback {
+                margin-right: 12px;
+                margin-bottom: 0px;
+                padding: 16px;
+                border-radius: 10px;
+                font-family: 'DM Sans', sans-serif;
+                font-size: 15px;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            .w-tab-link {
+                display: block;
+            }
+
+            .tab-cashback.w--current {
+                background-color: #0096ed;
+                color: #fff;
+            }
+
+            .tab-cashback._2 {
+                margin-right: 0px;
+            }
+
+            .w-inline-block {
+                max-width: 100%;
+                display: inline-block;
+            }
+
+            .div-block-289 {
+                border-radius: 10px;
+                background-color: #fff;
+            }
+
+            .div-block-289._2 {
+                margin-top: 16px;
+                padding-top: 0px;
+                padding-left: 0px;
+                background-color: #f7f8f8;
+            }
+
+            .grid-29 {
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                -ms-grid-columns: 0.5fr 1fr;
+                grid-template-columns: 0.5fr 1fr;
+            }
+
+            .grid-29._1 {
+                -ms-grid-columns: 0.5fr 0.5fr;
+                grid-template-columns: 0.5fr 0.5fr;
+            }
+
+            .div-block-287 {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                padding-left: 12px;
+                border-bottom: 1px solid #e3e7e8;
+            }
+
+            .div-block-287._2 {
+                border-right: 1px solid #e3e7e8;
+            }
+
+            .div-block-287._3 {
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+            }
+
+            .div-block-288 {
+                padding: 12px;
+                border-bottom: 1px solid #e3e7e8;
+            }
+
+            .div-block-288._2 {
+                border-right: 1px solid #e3e7e8;
+            }
+
+            .div-block-289 {
+                border-radius: 10px;
+                background-color: #fff;
+            }
+
+            .div-block-289._2 {
+                margin-top: 16px;
+                padding-top: 0px;
+                padding-left: 0px;
+                background-color: #f7f8f8;
+            }
+
+            .grid-29 {
+                grid-column-gap: 0px;
+                grid-row-gap: 0px;
+                -ms-grid-columns: 0.5fr 1fr;
+                grid-template-columns: 0.5fr 1fr;
+            }
+
+            .grid-29._1 {
+                -ms-grid-columns: 0.5fr 0.5fr;
+                grid-template-columns: 0.5fr 0.5fr;
+            }
+
+            .div-block-291 {
+                padding: 12px;
+                border-style: none solid solid none;
+                border-width: 1px;
+                border-color: #e3e7e8;
+            }
+
+            .div-block-291._2 {
+                border-right-style: none;
+            }
+
+            .div-block-291._3 {
+                border-bottom-style: none;
+            }
+
+            .div-block-291._4 {
+                border-right-style: none;
+                border-bottom-style: none;
+            }
+
+            .silver-base-table {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="section-3 _2">
+        <div class="div-block-265 cb"><img
+                src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fc478bf7c62837ab9bdde29_Group%2021%401x.svg"
+                loading="lazy" alt="">
+            <h1 class="arial-24"><strong>Product Category and Reward Tier</strong><br></h1>
+            <p class="arial-15">Comparison between the reward tier range of 2 product groups: Gold Base and Silver
+                Base<a href="https://new.printbase.co/catalog" target="_blank"><strong><br></strong></a></p>
+        </div>
+        <div class="div-block-290">
+            <div data-duration-in="300" data-duration-out="100" class="w-tabs">
+                <div class="tabs-menu-5 w-tab-menu" role="tablist">
+                    <div class="tabs-menu-5 w-tab-menu" role="tablist"><a data-w-tab="Tab 1"
+                            class="tab-cashback w-inline-block w-tab-link w--current" id="gold-tab" href="#">
+                            <div>Gold Base</div>
+                        </a><a data-w-tab="Tab 2" class="tab-cashback _2 w-inline-block w-tab-link"
+                            id="silver-tab" href="#">
+                            <div>Sliver Base</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="w-tab-content">
+                    <div data-w-tab="Tab 1" class="w-tab-pane w--tab-active gold-base-table" id="w-tabs-0-data-w-pane-0"
+                        role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0">
+                        <div class="div-block-289">
+                            <div class="w-layout-grid grid-29 gold-content">
+                                <div class="div-block-287 _2">
+                                    <div class="title-block">Category</div>
+                                </div>
+                                <div class="div-block-287 _3"><img
+                                        src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fc32d7951c3f8bec875ec08_3d%203d1%401x.svg"
+                                        loading="lazy" width="16" height="16" alt="" class="image-97">
+                                    <div class="title-block">Gold Base</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-block-289 _2">
+                            <div class="w-layout-grid grid-29 _1">
+                                <div class="div-block-291">
+                                    <div class="title-block"><strong>Quantity of product sold</strong></div>
+                                </div>
+                                <div class="div-block-291 _2">
+                                    <div class="title-block"><strong>Get paid:</strong></div>
+                                </div>
+                                <div class="div-block-291">
+                                    <div class="title-block"><strong>501-1000</strong></div>
+                                </div>
+                                <div class="div-block-291 _2">
+                                    <div class="text-block-101"><strong>$0.50</strong><span
+                                            class="text-span-4">/Products</span>
+                                    </div>
+                                </div>
+                                <div class="div-block-291 _3">
+                                    <div class="title-block"><strong>1001+</strong></div>
+                                </div>
+                                <div class="div-block-291 _4">
+                                    <div class="text-block-101"><strong>$1.00</strong><span
+                                            class="text-span-4">/Products</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-w-tab="Tab 2" class="w-tab-pane silver-base-table" id="w-tabs-0-data-w-pane-1"
+                        role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1">
+                        <div class="div-block-289">
+                            <div class="w-layout-grid grid-29 silver-content">
+                                <div class="div-block-287 _2">
+                                    <div class="title-block">Category</div>
+                                </div>
+                                <div class="div-block-287 _3"><img
+                                        src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fc32d79f7e1557ec08a017b_3d%203d2%401x.svg"
+                                        loading="lazy" width="16" height="16" alt="" class="image-97">
+                                    <div class="title-block">Sliver Base</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-block-289 _2">
+                            <div class="w-layout-grid grid-29 _1">
+                                <div class="div-block-291">
+                                    <div class="title-block"><strong>Quantity of product sold</strong></div>
+                                </div>
+                                <div class="div-block-291 _2">
+                                    <div class="title-block"><strong>Get paid:</strong></div>
+                                </div>
+                                <div class="div-block-291">
+                                    <div class="title-block"><strong>501-1000</strong></div>
+                                </div>
+                                <div class="div-block-291 _2">
+                                    <div class="text-block-101"><strong>$0.25</strong><span
+                                            class="text-span-4">/Products</span>
+                                    </div>
+                                </div>
+                                <div class="div-block-291 _3">
+                                    <div class="title-block"><strong>1001+</strong></div>
+                                </div>
+                                <div class="div-block-291 _4">
+                                    <div class="text-block-101"><strong>$0.50</strong><span
+                                            class="text-span-4">/Products</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="cashback">
+                <div class="w-layout-grid grid-21 desktop">
+                    <div class="block-title header">
+                        <div class="title-block">Category</div>
+                    </div>
+                    <div class="block-content _2"><img
+                            src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fc32d7951c3f8bec875ec08_3d%203d1%401x.svg"
+                            loading="lazy" width="16" height="16" alt="" class="image-97">
+                        <div class="head-title"><strong>Goldbase</strong></div>
+                    </div>
+                    <div class="block-content _3"><img
+                            src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/5fc32d79f7e1557ec08a017b_3d%203d2%401x.svg"
+                            loading="lazy" width="16" height="16" alt="" class="image-97">
+                        <div class="head-title">Sliverbase</div>
+                    </div>
+                </div>
+                <div class="quantity">
+                    <div class="w-layout-grid grid-22">
+                        <div class="div-block-264 header">
+                            <div class="title-block"><strong>Quantity of product sold</strong></div>
+                        </div>
+                        <div id="" class="div-block-264 header _3">
+                            <div class="title-block"><strong>Get paid:</strong></div>
+                        </div>
+                        <div id="" class="div-block-264 header _2">
+                            <div class="title-block"><strong>Get paid:</strong></div>
+                        </div>
+                        <div id="" class="div-block-264">
+                            <div class="title-block"><strong>501 - 1000</strong></div>
+                        </div>
+                        <div id="" class="div-block-264 _3">
+                            <div class="text-block-101"><strong>$0.50</strong><span class="text-span-4">/item</span>
+                            </div>
+                        </div>
+                        <div id="" class="div-block-264 _2">
+                            <div class="text-block-101"><strong>$0.25</strong><span class="text-span-4">/item</span>
+                            </div>
+                        </div>
+                        <div id="" class="div-block-264">
+                            <div class="title-block"><strong>1001+</strong></div>
+                        </div>
+                        <div id="" class="div-block-264 _3">
+                            <div class="text-block-101"><strong>$1.00</strong><span class="text-span-4">/item</span>
+                            </div>
+                        </div>
+                        <div id="" class="div-block-264 _2">
+                            <div class="text-block-101"><strong>$0.50</strong><span class="text-span-4">/item</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="div-block-266"></div>
+        </div>
+</body>
+<script>
+    var request = new XMLHttpRequest();
+    // Open a new connection, using the GET request on the URL endpoint
+    request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true);
+    // request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/catalogs', true);
+    request.onload = function () {
+        if (request.status >= 200 && request.status < 400) {
+            const data = JSON.parse(this.response).result;
+            const rowSpan1 = data.list_category.length;
+            if (window.innerWidth < 780) {
+                data.list_category.forEach((category, i) => {
+                    contentGold = `<div class="div-block-288 _2"><div class="title-block">${category.name}</div></div>`
+                    goldbaseProduct = ""
+                    category.list_base_product.filter(product => product.group_name == "Gold Base").forEach(product => {
+                        goldbaseProduct += `${product.title}<br>`
+                    })
+                    contentGold += `<div class="div-block-288"><div class="product-list _2">${goldbaseProduct}</div></div>`
+                    document.querySelector('.gold-content').insertAdjacentHTML('beforeend', contentGold)
+
+                    contentSilver = `<div class="div-block-288 _2"><div class="title-block">${category.name}</div></div>`
+                    silverBaseProduct = ""
+                    category.list_base_product.filter(product => product.group_name == "Silver Base").forEach(product => {
+                        silverBaseProduct += `${product.title}<br>`
+                    })
+                    contentSilver += `<div class="div-block-288"><div class="product-list _2">${silverBaseProduct}</div></div>`
+                    document.querySelector('.silver-content').insertAdjacentHTML('beforeend', contentSilver)
+                });
+            } else {
+                let content = ""
+                data.list_category.forEach((category, i) => {
+                    content += `<div class="block-title"><div class="title-block">${category.name}</div></div>`
+                    goldProductList = goldProductList1 = goldProductListResult = ""
+                    countGold = 0
+                    category.list_base_product.filter(product => product.group_name == "Gold Base").forEach(product => {
+                        if (countGold <= 11) {
+                            goldProductList1 += `${product.title}<br>`
+                        }
+                        else {
+                            goldProductList += `${product.title}<br>`
+                        }
+                        countGold++
+                    });
+
+                    if (goldProductList != "") {
+                        goldProductListResult += `<div class="product-list _1">${goldProductList1}</div>`
+                        goldProductListResult += `<div class="product-list">${goldProductList}</div>`
+                    } else {
+                        goldProductListResult += `<div class="product-list _2">${goldProductList1}</div>`
+                    }
+                    content += `<div class="block-content">${goldProductListResult}</div>`
+
+                    silverProductList = silverProductList1 = silverProductListResult = ""
+                    countSilver = 0
+                    category.list_base_product.filter(product => product.group_name == "Silver Base").forEach(product => {
+                        if (countSilver <= 11) {
+                            silverProductList1 += `${product.title}<br>`
+                        } else {
+                            silverProductList += `${product.title}<br>`
+                        }
+                        countSilver++
+                    });
+
+                    if (silverProductList != "") {
+                        silverProductListResult += `<div class="product-list _1">${silverProductList1}</div>`
+                        silverProductListResult += `<div class="product-list">${silverProductList}</div>`
+                    }
+                    else {
+                        silverProductListResult += `<div class="product-list _2">${silverProductList1}</div>`
+                    }
+                    content += `<div class="block-content _1">${silverProductListResult}</div>`
+                });
+
+                document.querySelector('.desktop').insertAdjacentHTML('beforeend', content)
+            }
+
+        }
+    }
+    request.send();
+    $(document).ready(function () {
+        $("a#gold-tab").click(function () {
+            $(".silver-base-table").hide();
+            $(".gold-base-table").show();
+            $("#gold-tab").addClass("w--current")
+            $("#silver-tab").removeClass("w--current")
+        });
+        $("a#silver-tab").click(function () {
+            $(".gold-base-table").hide();
+            $(".silver-base-table").show();
+            $("#silver-tab").addClass("w--current")
+            $("#gold-tab").removeClass("w--current")
+        });
+    });
+</script>
+
+</html>
