@@ -169,10 +169,10 @@
                     if(indexCat === 0 ) {
                         cashBackFilter = `<div id="cashback_filter">
                         <div id="cashback-select-area" style="">
-                        <div style="width: 85%;">
+                        <div class="cashback-select-label">
                         <label style="margin-bottom:0;font-weight: 500; font-size: 16px; color: rgba(36, 39, 46, 0.5)">Cashback tier: <span id="select-cashback-value" style="color:rgb(36, 39, 46)">All</span></label>
                         </div>
-                        <svg style="width: 15px;" xmlns="http://www.w3.org/2000/svg"  data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
+                        <svg class="cashback-select-icon" xmlns="http://www.w3.org/2000/svg"  data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
                         </div>
                         <div id="cashback_select_options">
                         <a class="s-cashback-option" data-select="1" value="All" >All</a>
