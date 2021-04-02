@@ -155,7 +155,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
             if (windscroll >= 100) {
                 $('.contetnt-printbase .base-product-wrap').each(function (index, value) {
                     var id = $(value).attr('id')
-                    if ($(value).position().top <= windscroll + 10) {
+                    if ($(value).position().top <= windscroll + 100) {
                         if ($(`.catalog-nav a[href="#${id}"]`) && $(`.catalog-nav a[href="#${id}"]`).length > 0) {
                             $('.catalog-nav a').removeClass('w--current')
                             $(`.catalog-nav a[href="#${id}"]`).addClass('w--current')
