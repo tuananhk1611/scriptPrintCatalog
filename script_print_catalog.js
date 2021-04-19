@@ -56,12 +56,12 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                 var customBadgeWrapper = ''
                 if (product.group_name == 'Gold Base') {
                     tierToolTip += `<div class="tierToolTip" style="border-radius:6px;background-color:#fff;position:absolute;top:18%;width:80%;left:30px;display:none;">
-                            <p style="color:rgb(110, 122, 129);font-size:14px;line-height:24px;padding:16px;margin-bottom:0;border-radius:6px">For each item sold within Gold Base product group, you can receive up to $1 cashback.</p></div>`
+                            <p style="color:rgb(110, 122, 129);font-size:14px;line-height:24px;padding:16px;margin-bottom:0;border-radius:6px">For each sold item, you'll earn 1 Star to exchange amazing gifts in PrintBase Tier Program.</p></div>`
                     tier += `<div class="tier-icon" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03);position:absolute;left:15px;top:42%;width:36px;height:36px;border-radius:25px;background-color:#fff;">
                             <img style="display:block;margin:auto;padding-top:10px;" src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/6017ac42be8e9e3a7743fc56_Gold.svg"></div>`}
                 if (product.group_name == 'Silver Base') {
                     tierToolTip += `<div class="tierToolTip" style="border-radius:6px;background-color:#fff;position:absolute;top:13%;width:80%;left:30px;display:none;">
-                            <p style="color:rgb(110, 122, 129);font-size:14px;line-height:24px;padding:16px;margin-bottom:0;border-radius:6px">For each item sold within Silver Base product group, you can receive up to $0.5 cashback.</p></div>`
+                            <p style="color:rgb(110, 122, 129);font-size:14px;line-height:24px;padding:16px;margin-bottom:0;border-radius:6px">For each sold item, you'll earn 0.5 Star to exchange amazing gifts in PrintBase Tier Program.</p></div>`
                     tier += `<div class="tier-icon" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03);position:absolute;left:15px;top:42%;width:36px;height:36px;border-radius:25px;background-color:#fff;">
                             <img style="display:block;margin:auto;padding-top:10px;" src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/6017ac32c307b439444cb58c_Silver%401x.svg"></div>`}
                 if (allBadge['prod-' + product.id]) {
@@ -104,7 +104,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                 cashBackFilter = `<div id="cashback_filter">
                         <div id="cashback-select-area" style="">
                         <div class="cashback-select-label">
-                        <label style="margin-bottom:0;font-weight: 500; font-size: 16px; color: rgba(36, 39, 46, 0.5)">Cashback tier: <span id="select-cashback-value" style="color:rgb(36, 39, 46)">All</span></label>
+                        <label style="margin-bottom:0;font-weight: 500; font-size: 16px; color: rgba(36, 39, 46, 0.5)">Product Group: <span id="select-cashback-value" style="color:rgb(36, 39, 46)">All</span></label>
                         </div>
                         <svg class="cashback-select-icon" xmlns="http://www.w3.org/2000/svg"  data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
                         </div>
