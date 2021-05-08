@@ -20,7 +20,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                 allBadge['prod-' + key].sort((a, b) => a.name.localeCompare(b.name))
             })
         }
-        listUniqueBadge.unshift(bestSelling); if (listUniqueBadge.length !== 0) { var i; for (i = 0; i < listUniqueBadge.length; i++) { badgeOptions += `<a class="link-block-8 _3 w-inline-block s-option"  data-value-name="${listUniqueBadge[i].display_name}" value="${listUniqueBadge[i].badge_id}" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);">${listUniqueBadge[i].display_name}</a>` } }
+        listUniqueBadge.unshift(bestSelling); if (listUniqueBadge.length !== 0) { var i; for (i = 0; i < listUniqueBadge.length; i++) { badgeOptions += `<a class="link-block-8 _3 w-inline-block s-option"  data-value-name="${listUniqueBadge[i].display_name}" value="${listUniqueBadge[i].badge_id}" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-bottom: 1px solid rgb(235, 235, 235);">${listUniqueBadge[i].display_name}</a>` } }
         var filterContent = ''
         filterContent += `<div id="select-area" style="width: 100%; margin-top: 50px; display: flex;align-items: center; justify-content: space-between; background-color: #e8e8e8; padding: 10px 20px; border-radius: 10px">
                 <div style="display: grid">
