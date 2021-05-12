@@ -166,13 +166,13 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
         }).scroll()
         $('.base-products').on('click', function (e) {
             var productId = $(e.currentTarget).attr('id')
-            let [_, hashNav] = window.location.hash.split('#')
+            let [hashNav] = window.location.hash.replace('#', '').split('/')
             if (hashNav) {
                 hashNav = decodeURIComponent(hashNav).split('#')[0] || hashNav
-                window.location.href = `#${hashNav}#${productId}`
+                window.location.href = `#${hashNav}/${productId}`
             } else {
                 let nav = $(e.currentTarget).parents('.base-product-wrap').first().attr('id')
-                window.location.href = `#${nav}#${productId}`
+                window.location.href = `#${nav}/${productId}`
             }
             var shippingZonesData = window.injectDataCatalog.result.shipping_zones
             var dataCat = $(e.currentTarget).attr('data-cat')
