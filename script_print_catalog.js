@@ -6,8 +6,13 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
         var injectData = window.injectDataCatalog.result.list_category
         var navContent = ''
         injectData.map(function (item, index) {
-            navContent += `<a id="${item.name.toSlug()}-${index}" style="${!index ? 'border-top: 1px solid #ebebeb; border-top-left-radius: 5px;border-top-right-radius: 5px' : ''}" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name
+            if(index !== injectData.length - 1){
+            navContent += `<a id="${item.name.toSlug()}-${index}" style="${!index ? 'border-top: 1px solid #ebebeb; border-top-right-radius: 5px; border-top-left-radius: 5px;' : ''}" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name
                 }</a>`
+            }else{
+                navContent += `<a id="${item.name.toSlug()}-${index}" style="border-bottom-right-radius: 5px; border-bottom-left-radius: 5px" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name
+                }</a>`
+            }
         })
         var listContent = ''; var allBadge = []; var listUniqueBadge = []; var badgeOptions = ''; var badgeFilter = {}; var listId = []; var bestSelling = {}; if (data.result.list_badge.list !== null) {
             data.result.list_badge.list.forEach(function (item, index) {
@@ -20,7 +25,18 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                 allBadge['prod-' + key].sort((a, b) => a.name.localeCompare(b.name))
             })
         }
-        listUniqueBadge.unshift(bestSelling); if (listUniqueBadge.length !== 0) { var i; for (i = 0; i < listUniqueBadge.length; i++) { badgeOptions += `<a class="link-block-8 _3 w-inline-block s-option"  data-value-name="${listUniqueBadge[i].display_name}" value="${listUniqueBadge[i].badge_id}" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-bottom: 1px solid rgb(235, 235, 235);">${listUniqueBadge[i].display_name}</a>` } }
+        listUniqueBadge.unshift(bestSelling);
+        if (listUniqueBadge.length !== 0) { 
+            var i; 
+            for (i = 0; i < listUniqueBadge.length; i++) {
+                if(i !== listUniqueBadge.length - 1){
+                    badgeOptions += `<a class="link-block-8 _3 w-inline-block s-option"  data-value-name="${listUniqueBadge[i].display_name}" value="${listUniqueBadge[i].badge_id}" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-bottom: 1px solid rgb(235, 235, 235);">${listUniqueBadge[i].display_name}</a>` 
+                }else{
+                    badgeOptions += `<a class="link-block-8 _3 w-inline-block s-option"  data-value-name="${listUniqueBadge[i].display_name}" value="${listUniqueBadge[i].badge_id}" style="border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-bottom: 1px solid rgb(235, 235, 235);">${listUniqueBadge[i].display_name}</a>` 
+
+                }
+            } 
+        }
         var filterContent = ''
         filterContent += `<div id="select-area" style="width: 100%; margin-top: 50px; display: flex;align-items: center; justify-content: space-between; background-color: #e8e8e8; padding: 10px 20px; border-radius: 10px">
                 <div style="display: grid">
@@ -30,7 +46,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                 <svg style="width: 15px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
                 </div>
                 <div class="navi _2 catalog-nav" id="select_options" style="overflow: visible !important; display:none; margin-top:10px;  height: 404px">
-                <a class="link-block-8 _3 w-inline-block s-option" data-select="1" data-value-name="All" value="0" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
+                <a class="link-block-8 _3 w-inline-block s-option" data-select="1" data-value-name="All" value="0" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-right-radius: 5px; border-top-left-radius: 5px;">All</a>
                 `+ badgeOptions + `
                 </div></div>`
         var nav = document.querySelectorAll('.catalog-nav')[0]
@@ -112,10 +128,9 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                         <a class="s-cashback-option" data-select="1" value="All" >All</a>
                         <a class="s-cashback-option" value="Gold Base"><img style="margin-right:10px;" src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/6017ac42be8e9e3a7743fc56_Gold.svg">Gold Base</a>
                         <a class="s-cashback-option" value="Silver Base"><img style="margin-right:10px;" src="https://uploads-ssl.webflow.com/5ed4c2a86103a3136bf1e97c/6017ac32c307b439444cb58c_Silver%401x.svg">Silver Base</a>
-                        </div></div></div>`}
+                        </div></div>`}
             var text1 = `<div id="${item.name.toSlug()}" class="base-product-wrap">
-                    <div class="text-block-95">${item.name
-                } ${cashBackFilter}</div>
+                    <div class="text-block-95">${item.name} ${cashBackFilter}</div>
                 <div class="w-layout-grid grid-17 _2 base-product-grid">
                     ${listItem}
                 </div>
