@@ -91,7 +91,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
                         }
                     })
                 }
-                listItem += `<div class="base-products" style="position:relative" data-value-id="${badgeFilter['prod-' + product.id]}" data-cat="${indexCat}" data-index="${indexProduct}" badge-id="${badgeId}" group-name="${product.group_name
+                listItem += `<div class="base-products" style="position:relative" data-value-id="${badgeFilter['prod-' + product.id]}" data-category-name="${item.name}" data-cat="${indexCat}" data-index="${indexProduct}" badge-id="${badgeId}" group-name="${product.group_name
                     }" id="${product.title.toSlug()}">
                     <img src="${product.image_catalog
                     }" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">` + badge + tier + tierToolTip +
@@ -214,7 +214,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
         <p class="description">
             ${productDescriptionData.product_description}
         </p>
-        <p><strong>Shipping lines:</strong> USPS, Fedex${productDescriptionData.title == 'Long Sleeve Baby One Piece' || productDescriptionData.title == 'Baby One Piece' ? ', YunExpress' : ''}.</p>
+        <p><strong>Shipping lines:</strong> USPS, Fedex${productDescriptionData.title == 'Long Sleeve Baby One Piece' || productDescriptionData.title == 'Baby One Piece' || $(this).attr('data-category-name') == 'All Over Print' ? ', YunExpress' : ''}.</p>
         <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day
                 } - ${productDescriptionData.max_processing_day} bussiness days</p>
         <p>${productDescriptionData.short_description}</p>`
