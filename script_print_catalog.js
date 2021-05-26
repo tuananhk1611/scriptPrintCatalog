@@ -385,7 +385,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
             $('.product-description-popup').fadeIn(100)
             $('.detail-popup').scrollTop(0)
         })
-        let [_, hashNav, hashProduct] = window.location.hash.split('#')
+        let [hashNav, hashProduct] = window.location.hash.split('/')
         if (hashNav && hashProduct) {
             const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
             const loop = setInterval(() => {
