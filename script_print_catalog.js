@@ -216,7 +216,7 @@ request.open('GET', 'https://api.shopbase.com/v1/pod/catalogs', true); request.o
         </p>
         <p><strong>Shipping lines:</strong> USPS, Fedex${productDescriptionData.title == 'Long Sleeve Baby One Piece' || productDescriptionData.title == 'Baby One Piece' || $(this).attr('data-category-name') == 'All Over Print' ? ', YunExpress' : ''}.</p>
         <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day
-                } - ${productDescriptionData.max_processing_day} bussiness days</p>
+                } - ${productDescriptionData.max_processing_day} business days</p>
         <p>${productDescriptionData.short_description}</p>`
             var artWork = `
         <a style="${dataArwort.length === 1 && dataArwort[0] ? '' : 'display:none'
