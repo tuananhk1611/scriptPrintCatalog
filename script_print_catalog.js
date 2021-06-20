@@ -222,7 +222,7 @@ request.onload = function () {
       var rowThreeData = [].concat(shippingZone)
       var allLastRowData = []
 
-      var shippingTimeData = [{ name: 'N/A' }, { name: 'N/A' }]
+      var shippingTimeData = [{ name: 'N/A', props: { rowspan: sizeDatas.length } }, { name: 'N/A', props: { rowspan: sizeDatas.length } }]
       if (productDescriptionData.shipping_profile && productDescriptionData.shipping_profile.length) {
         for (var profile of productDescriptionData.shipping_profile) {
           var fieldIndex = profile.shipping_zone_id === 1 ? 0 : 1
@@ -232,8 +232,8 @@ request.onload = function () {
               name += `<p><strong>${shippingTimeLine.name}</strong>:<br/>${shippingTimeLine.shipping_time_min}-${shippingTimeLine.shipping_time_max}<br/>Business Days</p>`
             }
             shippingTimeData[fieldIndex] = { name: name, props: { rowspan: sizeDatas.length } }
-          } else {
-            shippingTimeData[fieldIndex] = { name: 'N/A', props: { rowspan: sizeDatas.length }}
+          } else if (profile.shipping_time) {
+            shippingTimeData[fieldIndex] = { name: profile.shipping_time, props: { rowspan: sizeDatas.length }}
           }
         }
       }
