@@ -415,6 +415,6 @@ var buildTable = function (tableData) {
 }
 
 String.prototype.toSlug = function () {
-  return this.toString().toLowerCase().replace(/s/g, '-').replace(/[^a-zA-Z0-9-]/g, '')
+  return this.toString().toLowerCase().replace(/\s/g, '-').replace(/[^a-zA-Z0-9-]/g, '')
 }
 request.send()
