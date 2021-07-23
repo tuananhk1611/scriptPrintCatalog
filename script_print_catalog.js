@@ -1,10 +1,85 @@
+
 var request = new XMLHttpRequest()
+var searchBarHtml = `<div class="container search-box">
+    <img style="position:absolute;left:16px;top:0;margin-top:20px;" src="https://www.printbase.com/wp-content/uploads/2021/07/Search.svg" >
+    <input id="search-input" type="text" placeholder="Search for products..." />
+    <button id="search-submit" type="button">Search</button>
+  </div>`
+var style = document.createElement('style');
+style.innerHTML = `
+.search-box {
+  display:flex;
+  flex-direction:row;
+  position:absolute;
+  bottom:-25px;
+  left:0;
+  right:0;
+  margin: auto;
+}
+#search-input { 
+  box-shadow: 0px 10px 16px -4px rgba(54, 62, 67, 0.06);
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 8px;
+  border: #D6D6D6 1px solid;
+  height: 56px;
+  background-color: #FFFFFF;
+  text-indent:48px;
+}
+#search-input::placeholder {
+  color: #B3B3B3;
+  font-size: 16px;
+  line-height: 24px;
+}
+#search-input:focus {
+  outline-style: none;
+}
+#search-submit {
+  margin-top:8px;
+  padding:11px 24px;
+  border-radius:3px;
+  position:absolute;
+  right:8px;
+  background-color:#0093ED;
+  color:#FFFFFF;
+  font-size:14px;
+  font-weight:bold;
+}
+#search-submit:focus {
+  outline-style: none;
+}
+.no-product {
+  font-size: 16px;
+  color: #131F37;
+}
+@media only screen and (max-width: 479px) {
+  .hero-plain .container:first-child {
+    margin-bottom:24px;
+  }
+  .search-box {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  
+  .search-box {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+}
+`;
+document.getElementsByTagName('head')[0].appendChild(style);
+
+//document.getElementById('search-input').className = 'cssClass';
+$('.hero-plain').css('position', 'relative')
+document.querySelectorAll('.hero-plain')[0].insertAdjacentHTML('beforeend', searchBarHtml)
 request.open('GET', 'https://api.shopbase.com/v1/pod/landing-catalogs', true)
 request.onload = function () {
-  console.log(this)
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
     window.injectDataCatalogV2 = data
+    
     var injectData = window.injectDataCatalogV2.result.list_category
     var navContent = ''
     injectData.map((item, index) => {
@@ -42,7 +117,7 @@ request.onload = function () {
       listItem = ''
       item.list_base_product.map((product, indexProduct) => {
         listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" group-name="${product.group_name
-        }" id="${product.title.toSlug()}">
+        }" id="${product.title.toSlug()}" data-title="${product.title}" data-search-term="${product.search_term}">
                 <img src="${product.image_catalog
 }" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
                 <div class="detail-content">
@@ -74,6 +149,7 @@ request.onload = function () {
       })
       var text1 = `<div id="${item.name.toSlug()}" class="base-product-wrap"><div class="text-block-95">${item.name
       }</div>
+            <p class="no-product" style="display:none;">No product founded</p>
             <div class="w-layout-grid grid-17 _2 base-product-grid">
                 ${listItem}
             </div>
@@ -81,6 +157,7 @@ request.onload = function () {
             </div>`
       listContent += text1
     })
+    let timeOut = null;
     container.innerHTML = ''
     container.insertAdjacentHTML('beforeend', listContent)
     $('.loading-section').fadeOut()
@@ -89,6 +166,102 @@ request.onload = function () {
       const open = $('#select_options').css('display')
       $('#select_options').css('display', `${open == 'none' ? 'block' : 'none'}`)
     })
+    $('#search-input').on('keyup', function() {
+      var notFound = false
+      var inputValue = $('#search-input').val() 
+      if(inputValue == '') {
+        $(this).css('display', 'block')
+        notFound = false
+      }
+      $('.base-products').each(function (i, obj) {
+        if(inputValue == '') {
+          $(this).css('display', 'block')
+          notFound = false
+        }
+      })
+      if(notFound === false) {
+        $('.no-product').hide()
+      }
+    })  
+    $('.search-box').keyup(() => {
+        var notFound = []
+        var inputValue = $('#search-input').val() 
+        $('.base-products').each(function (i, obj) {
+          if(inputValue == '') {
+            $(this).css('display', 'block')
+            notFound[i] = false
+          }
+          if ( $(this).attr('data-title').includes(inputValue) || $(this).attr('data-title') == inputValue) {
+            $(this).css('display', 'block')
+            notFound[i] = false
+          } else {
+            if($(this).attr('data-search-term')) {
+              if($(this).attr('data-search-term').includes(inputValue) || $(this).attr('data-search-term') == inputValue ) {
+                $(this).css('display', 'block')
+                notFound[i] = false
+              }else{
+                $(this).css('display', 'none')
+                notFound[i] = true
+              }
+            }else {
+              $(this).css('display', 'none')
+              notFound[i] = true
+            }
+          }
+        })
+        const searchResult = notFound.every(function(status) {
+          if(status == false) {
+            return false
+          }
+          return true
+        });
+        if(searchResult === true) {
+          $('.no-product').show()
+        }else {
+          $('.no-product').hide()
+        }
+      
+    })
+    $('#search-submit').on('click', function(e){
+      e.preventDefault()
+      var notFound = []
+      var inputValue = $('#search-input').val() 
+
+      $('.base-products').each(function (i, obj) {
+        if(inputValue == '') {
+          $(this).css('display', 'block')
+          notFound[i] = false
+        }
+        if ( $(this).attr('data-title').includes(inputValue) || $(this).attr('data-title') == inputValue) {
+          $(this).css('display', 'block')
+          notFound[i] = false
+        } else {
+          if($(this).attr('data-search-term')) {
+            if($(this).attr('data-search-term').includes(inputValue) || $(this).attr('data-search-term') == inputValue ) {
+              $(this).css('display', 'block')
+              notFound[i] = false
+            }else{
+              $(this).css('display', 'none')
+              notFound[i] = true
+            }
+          }else {
+            $(this).css('display', 'none')
+            notFound[i] = true
+          }
+        }
+      })
+      const searchResult = notFound.every(function(status) {
+        if(status == false) {
+          return false
+        }
+        return true
+      });
+      if(searchResult === true) {
+        $('.no-product').show()
+      }else {
+        $('.no-product').hide()
+      }
+    });
     $('.s-option').on('click', function (e) {
       const filterValue = $(this).attr('value')
       $('.base-products').each(function (i, obj) {
