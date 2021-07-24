@@ -149,7 +149,7 @@ request.onload = function () {
       })
       var text1 = `<div id="${item.name.toSlug()}" class="base-product-wrap"><div class="text-block-95">${item.name
       }</div>
-            <p class="no-product" style="display:none;">No product founded</p>
+            <p class="no-product" style="display:none;">No product found</p>
             <div class="w-layout-grid grid-17 _2 base-product-grid">
                 ${listItem}
             </div>
