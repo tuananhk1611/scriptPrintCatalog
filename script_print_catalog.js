@@ -166,49 +166,44 @@ request.onload = function () {
       const open = $('#select_options').css('display')
       $('#select_options').css('display', `${open == 'none' ? 'block' : 'none'}`)
     })
-    $('#search-input').on('keyup', function() {
-      var notFound = false
-      var inputValue = $('#search-input').val() 
-      if(inputValue == '') {
-        $(this).css('display', 'block')
-        notFound = false
-      }
-      $('.base-products').each(function (i, obj) {
-        if(inputValue == '') {
-          $(this).css('display', 'block')
-          notFound = false
-        }
-      })
-      if(notFound === false) {
-        $('.no-product').hide()
-      }
-    })  
-    $('.search-box').keyup(() => {
+    var delay = (function(){
+      var timer = 0;
+      return function(callback, ms){
+      clearTimeout (timer);
+      timer = setTimeout(callback, ms);
+     };
+    })();
+    $('#search-input').keyup(() => {
         var notFound = []
         var inputValue = $('#search-input').val() 
-        $('.base-products').each(function (i, obj) {
-          if(inputValue == '') {
-            $(this).css('display', 'block')
-            notFound[i] = false
-          }
-          if ( $(this).attr('data-title').includes(inputValue.toLowerCase()) || $(this).attr('data-title') == inputValue.toLowerCase()) {
-            $(this).css('display', 'block')
-            notFound[i] = false
-          } else {
-            if($(this).attr('data-search-term')) {
-              if($(this).attr('data-search-term').includes(inputValue.toLowerCase()) || $(this).attr('data-search-term') == inputValue.toLowerCase() ) {
-                $(this).css('display', 'block')
-                notFound[i] = false
-              }else{
+        delay(function(){
+          $('.base-products').each(function (i, obj) {
+            if(inputValue == '') {
+              $(this).css('display', 'block')
+              notFound[i] = false
+            }
+            let dataTitle = $(this).attr('data-title').toLowerCase();
+            if ( dataTitle.includes(inputValue.toLowerCase()) || dataTitle == inputValue.toLowerCase()) {
+              $(this).css('display', 'block');
+              notFound[i] = false
+            } else {
+              if($(this).attr('data-search-term')) {
+                searchTerm = $(this).attr('data-search-term').toLowerCase();
+                if(searchTerm.includes(inputValue.toLowerCase()) || searchTerm == inputValue.toLowerCase() ) {
+                  $(this).css('display', 'block')
+                  notFound[i] = false
+                }else{
+                  $(this).css('display', 'none')
+                  notFound[i] = true
+                }
+              }else {
                 $(this).css('display', 'none')
                 notFound[i] = true
               }
-            }else {
-              $(this).css('display', 'none')
-              notFound[i] = true
             }
-          }
-        })
+          })
+        }, 1000 );
+        
         const searchResult = notFound.every(function(status) {
           if(status == false) {
             return false
@@ -226,18 +221,19 @@ request.onload = function () {
       e.preventDefault()
       var notFound = []
       var inputValue = $('#search-input').val() 
-
       $('.base-products').each(function (i, obj) {
         if(inputValue == '') {
           $(this).css('display', 'block')
           notFound[i] = false
         }
-        if ( $(this).attr('data-title').includes(inputValue.toLowerCase()) || $(this).attr('data-title') == inputValue.toLowerCase()) {
-          $(this).css('display', 'block')
+        let dataTitle = $(this).attr('data-title').toLowerCase();
+        if ( dataTitle.includes(inputValue.toLowerCase()) || dataTitle == inputValue.toLowerCase()) {
+          $(this).css('display', 'block');
           notFound[i] = false
         } else {
           if($(this).attr('data-search-term')) {
-            if($(this).attr('data-search-term').includes(inputValue.toLowerCase()) || $(this).attr('data-search-term') == inputValue.toLowerCase() ) {
+            searchTerm = $(this).attr('data-search-term').toLowerCase();
+            if(searchTerm.includes(inputValue.toLowerCase()) || searchTerm == inputValue.toLowerCase() ) {
               $(this).css('display', 'block')
               notFound[i] = false
             }else{
