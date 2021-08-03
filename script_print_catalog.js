@@ -191,12 +191,12 @@ request.onload = function () {
             $(this).css('display', 'block')
             notFound[i] = false
           }
-          if ( $(this).attr('data-title').includes(inputValue) || $(this).attr('data-title') == inputValue) {
+          if ( $(this).attr('data-title').includes(inputValue.toLowerCase()) || $(this).attr('data-title') == inputValue.toLowerCase()) {
             $(this).css('display', 'block')
             notFound[i] = false
           } else {
             if($(this).attr('data-search-term')) {
-              if($(this).attr('data-search-term').includes(inputValue) || $(this).attr('data-search-term') == inputValue ) {
+              if($(this).attr('data-search-term').includes(inputValue.toLowerCase()) || $(this).attr('data-search-term') == inputValue.toLowerCase() ) {
                 $(this).css('display', 'block')
                 notFound[i] = false
               }else{
@@ -232,12 +232,12 @@ request.onload = function () {
           $(this).css('display', 'block')
           notFound[i] = false
         }
-        if ( $(this).attr('data-title').includes(inputValue) || $(this).attr('data-title') == inputValue) {
+        if ( $(this).attr('data-title').includes(inputValue.toLowerCase()) || $(this).attr('data-title') == inputValue.toLowerCase()) {
           $(this).css('display', 'block')
           notFound[i] = false
         } else {
           if($(this).attr('data-search-term')) {
-            if($(this).attr('data-search-term').includes(inputValue) || $(this).attr('data-search-term') == inputValue ) {
+            if($(this).attr('data-search-term').includes(inputValue.toLowerCase()) || $(this).attr('data-search-term') == inputValue.toLowerCase() ) {
               $(this).css('display', 'block')
               notFound[i] = false
             }else{
