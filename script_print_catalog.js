@@ -202,19 +202,20 @@ request.onload = function () {
               }
             }
           })
+          const searchResult = notFound.every(function(status) {
+            if(status == false) {
+              return false
+            }
+            return true
+          });
+          if(searchResult === true) {
+            $('.no-product').show()
+          }else {
+            $('.no-product').hide()
+          }
         }, 1000 );
         
-        const searchResult = notFound.every(function(status) {
-          if(status == false) {
-            return false
-          }
-          return true
-        });
-        if(searchResult === true) {
-          $('.no-product').show()
-        }else {
-          $('.no-product').hide()
-        }
+        
       
     })
     $('#search-submit').on('click', function(e){
