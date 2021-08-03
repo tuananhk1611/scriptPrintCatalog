@@ -176,7 +176,6 @@ request.onload = function () {
     $('#search-input').keyup(() => {
         var notFound = []
         var inputValue = $('#search-input').val() 
-        console.log(2222,inputValue)
         delay(function(){
           $('.base-products').each(function (i, obj) {
             if(inputValue == '') {
@@ -222,7 +221,6 @@ request.onload = function () {
       e.preventDefault()
       var notFound = []
       var inputValue = $('#search-input').val() 
-      console.log(33333,inputValue)
       $('.base-products').each(function (i, obj) {
         if(inputValue == '') {
           $(this).css('display', 'block')
