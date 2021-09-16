@@ -68,6 +68,55 @@ style.innerHTML = `
     margin-right: 25px;
   }
 }
+.number-color {
+  color: #0093ed;
+}
+.div-color {
+  width:30px; 
+  height: 30px; 
+  border-radius:5px; 
+  display: inline-block;
+  margin-right: 5px;
+  border: 1px solid rgb(235, 235, 235);
+}
+.div-list-color {
+  width:100%; 
+  margin-bottom: 10px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #3c4449;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 30%;
+  margin-left: -25px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #3c4449 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 `;
 document.getElementsByTagName('head')[0].appendChild(style);
 
@@ -116,6 +165,12 @@ request.onload = function () {
     injectData.map((item, indexCat) => {
       listItem = ''
       item.list_base_product.map((product, indexProduct) => {
+        var colorEnable = []
+        if (product.type !== 'aop' && product.color && product.color.length > 0) {
+          colorEnable = product.color.filter((color) => {
+            return color.enable === true
+          })
+        }
         listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" group-name="${product.group_name
         }" id="${product.title.toSlug()}" data-title="${product.title}" data-search-term="${product.search_term}">
                 <img src="${product.image_catalog
@@ -135,6 +190,7 @@ request.onload = function () {
                 <p class="description _2">Base cost from:
                     <strong class="price">$${product.base_cost}</strong>
                 </p>
+                ${colorEnable.length > 0 ? '<p class="description _2">Available in <strong class="number-color">' + colorEnable.length + '</strong> colors</p>' : ""}
                 <div class="line-2"></div>
                 <p class="paragraph-bold">
                     <strong class="subtitle">Artwork requirement</strong>
@@ -315,6 +371,14 @@ request.onload = function () {
       document.querySelectorAll('.product-description-popup .detail-popup .image')[0].insertAdjacentHTML('beforeend', imgDescription)
       var hasWhiteColor = productDescriptionData.size_data.filter((item) => item.white_color_price !== 0).length > 0
       var hasOtherColor = productDescriptionData.size_data.filter((item) => item.other_color_price !== 0).length > 0
+      var listColor = ''
+      if (productDescriptionData.type !== 'aop' && productDescriptionData.color && productDescriptionData.color.length > 0) {
+        for (var color of productDescriptionData.color) {
+          if (color.enable) {
+            listColor += `<div class="div-color tooltip" style="background-color: #${color.hex}"><span class="tooltiptext">${color.name}</span></div>`
+          }
+        }
+      }
 
       // start insert description
       const productDescriptions = document.querySelectorAll('.product-description-popup .detail-popup .description-popup')
@@ -335,6 +399,7 @@ request.onload = function () {
                     <p class="description">
                         ${productDescriptionData.product_description}
                     </p>
+                    ${listColor !== '' ? '<p><strong>Available colors:</strong></p><div class="div-list-color">'+ listColor +'</div>' : ""}
                     <p><strong>Shipping lines:</strong> USPS, Fedex, YunExpress.</p>
                     <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day} - ${productDescriptionData.max_processing_day} business days</p>
                     <p>${productDescriptionData.short_description}</p>
