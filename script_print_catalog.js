@@ -585,7 +585,7 @@ request.onload = function () {
       $('.product-description-popup').fadeIn(100)
       $('.detail-popup').scrollTop(0)
     })
-    let [hashNav, hashProduct] = window.location.hash.replace('#').split('/')
+    let [hashNav, hashProduct] = window.location.hash.replace('#', '').split('/')
     if (hashNav && hashProduct) {
       const scrollTopOriginal = $(`#${hashProduct}`).offset() ? $(`#${hashProduct}`).offset().top - 90 : 0
       const loop = setInterval(() => {
