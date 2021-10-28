@@ -531,32 +531,16 @@ request.onload = function () {
                   cols[cur] = { name: `$${group.shipping_rules[usIndex].first_item_price}` }
                   cols[cur + 2] = { name: `$${group.shipping_rules[usIndex].additional_price}` }
                 } else {
-                  var indexUsProfile = productDescriptionData.shipping_profile.findIndex((o) => {
-                    return o.shipping_zone_id === 1
-                  })
-                  if (indexUsProfile > -1) {
-                    cols[cur] = { name: productDescriptionData.shipping_profile[indexUsProfile].shipping_fee }
-                    cols[cur + 2] = { name: productDescriptionData.shipping_profile[indexUsProfile].additional_item_price }
-                  } else {
-                    cols[cur] = {name: 'N/A'}
-                    cols[cur + 2] = {name: 'N/A'}
-                  }
+                  cols[cur] = {name: 'N/A'}
+                  cols[cur + 2] = {name: 'N/A'}
                 }
 
                 if (internationalIndex > -1) {
                   cols[cur + 1] = { name: `$${group.shipping_rules[internationalIndex].first_item_price}` }
                   cols[cur + 3] = { name: `$${group.shipping_rules[internationalIndex].additional_price}` }
                 } else {
-                  var indexGlobalProfile = productDescriptionData.shipping_profile.findIndex((o) => {
-                    return o.shipping_zone_id === 2
-                  })
-                  if (indexGlobalProfile > -1) {
-                    cols[cur + 1] = { name: productDescriptionData.shipping_profile[indexGlobalProfile].shipping_fee }
-                    cols[cur + 3] = { name: productDescriptionData.shipping_profile[indexGlobalProfile].additional_item_price }
-                  } else {
-                    cols[cur + 1] = {name: 'N/A'}
-                    cols[cur + 3] = {name: 'N/A'}
-                  }
+                  cols[cur + 1] = {name: 'N/A'}
+                  cols[cur + 3] = {name: 'N/A'}
                 }
               }
               y = y + 4
