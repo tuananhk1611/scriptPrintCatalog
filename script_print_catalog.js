@@ -7,6 +7,122 @@ var searchBarHtml = `<div class="container search-box">
   </div>`
 var style = document.createElement('style');
 style.innerHTML = `
+    #badgeFilter {
+        border-radius: 12px;
+        box-shadow: 0 0 8px #eee;
+        margin-top: 30px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    #badgeFilter::after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 0.255em;
+        vertical-align: 0.255em;
+        content: "";
+        border-top: 0.4em solid #C5C5C5;
+        border-right: 0.4em solid transparent;
+        border-bottom: 0;
+        border-left: 0.4em solid transparent;
+        position: absolute;
+        top: 24px;
+        right: 20px;
+    }
+
+    #badgeFilter .badgeFilter_title {
+        padding: 16px 20px;
+    }
+
+    #badgeFilter .badgeFilter_title h4 {
+        margin-top: 0;
+        margin-bottom: 4px;
+        color: #949494;
+        font-size: 14px;
+        text-transform: uppercase;
+        line-height: 20px;
+    }
+
+    #badgeFilter .badgeFilter_title p {
+      font-size: 12px;
+      line-height: 18px;
+      color: #949494;
+      margin-bottom: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    #badgeFilter .badgeFilter_listFilterOption .badgeFilter_item {
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #F3F3F3;
+        padding: 14px 20px;
+        cursor: pointer;
+    }
+
+    #badgeFilter .badgeFilter_listFilterOption .badgeFilter_item label {
+        font-size: 14px;
+        margin-left: 10px;
+        color: #6E7A81;
+        margin-bottom: 0;
+        width: 100%;
+        cursor: pointer;
+    }
+
+
+.base-products {
+    position: relative;
+}
+.contetnt-printbase {
+    position: relative;
+}
+
+#select-area {
+    cursor: pointer;
+    width: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8e8e8;
+    padding: 8px 14px;
+    border-radius: 3px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 9;
+}
+
+#select-area .drop-down-box {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#select-area #select_options {
+    display: none;
+    margin-top: 10px;
+    overflow: visible !important;
+    position: absolute;
+    height: auto;
+    background: #fff;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    box-shadow: 0 0 12px #eee;
+}
+
+#select-area #select_options .s-option {
+    padding: 10px 24px;
+}
+
+#select-area #select_options .s-option img {
+    width: 16px;
+    margin-right: 8px;
+}
+
 .search-box {
   display:flex;
   flex-direction:row;
@@ -16,7 +132,7 @@ style.innerHTML = `
   right:0;
   margin: auto;
 }
-#search-input { 
+#search-input {
   box-shadow: 0px 10px 16px -4px rgba(54, 62, 67, 0.06);
   max-width: 1200px;
   width: 100%;
@@ -52,6 +168,24 @@ style.innerHTML = `
   font-size: 16px;
   color: #131F37;
 }
+
+.group-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    display: flex;
+}
+
+.group-icon p {
+    margin-bottom: 0;
+    margin-right: 3px;
+}
+
+.group-icon p img {
+    width: 24px;
+    max-width: 24px;
+}
+
 @media only screen and (max-width: 479px) {
   .hero-plain .container:first-child {
     margin-bottom:24px;
@@ -62,25 +196,30 @@ style.innerHTML = `
   }
 }
 @media only screen and (max-width: 1200px) {
-  
+
   .search-box {
     margin-left: 25px;
     margin-right: 25px;
+  }
+
+  #badgeFilter .badgeFilter_listFilterOption {
+    max-height: 250px;
+    overflow: auto;
   }
 }
 .number-color {
   color: #0093ed;
 }
 .div-color {
-  width:30px; 
-  height: 30px; 
-  border-radius:5px; 
+  width:30px;
+  height: 30px;
+  border-radius:5px;
   display: inline-block;
   margin-right: 5px;
   border: 1px solid rgb(235, 235, 235);
 }
 .div-list-color {
-  width:100%; 
+  width:100%;
   margin-bottom: 10px;
 }
 .tooltip {
@@ -135,23 +274,20 @@ request.onload = function () {
       navContent += `<a id="${item.name.toSlug()}-${index}" style="${!index ? 'border-top: 1px solid #ebebeb; border-top-left-radius: 5px;border-top-right-radius: 5px' : ''}" href="#${item.name.toSlug()}" class="link-block-8 _3 w-inline-block">${item.name
       }</a>`
     })
-    var filterContent = ''
-    filterContent += `<div id="select-area" style="width: 100%; margin-top: 50px; display: flex;align-items: center; justify-content: space-between; background-color: #e8e8e8; padding: 10px 20px; border-radius: 10px">
-            <div style="display: grid">
-            <label style="font-weight: 400; font-size: 16px; color: #5E6A6E">Cashback tier</label>
-            <span id="select-value" style="font-weight: 600">All</span>
-            </div>
-            <svg style="width: 15px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
-            </div>
-            <div class="navi _2 catalog-nav" id="select_options" style="overflow: visible !important; display:none; margin-top:10px;  height: 404px">
-            <a class="link-block-8 _3 w-inline-block s-option" value="All" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
-            <a class="link-block-8 _3 w-inline-block  s-option" value="Gold Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);">Gold Base</a>
-            <a class="link-block-8 _3 w-inline-block s-option" value="Silver Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);border-bottom: 1px solid rgb(235, 235, 235); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">Silver Base</a>
-            </div></div>`
-    var nav = document.querySelectorAll('.catalog-nav')[0]
-    nav.innerHTML = ''
-    document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', navContent)
-    document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', filterContent)
+    var filterContent = '';
+    filterContent += `<div id="select-area">
+        <div class="drop-down-box">
+            <label style="font-weight: 400; font-size: 14px; color: #5E6A6E; margin-bottom: 0">Cashback tier: <span id="select-value" style="font-weight: 600">All</span></label>
+            <svg style="width: 10px" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" class="svg-inline--fa fa-angle-down fa-w-10" role="img" viewBox="0 0 320 512"><path fill="currentColor" d="M143 352.3L7 216.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.2 9.4-24.4 9.4-33.8 0z"/></svg>
+        </div>
+        <div id="select_options">
+        <a class="link-block-8 _3 w-inline-block s-option" value="All" style="border-left: 1px solid rgb(235, 235, 235); border-top: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235); border-top-left-radius: 5px; border-top-right-radius: 5px">All</a>
+        <a class="link-block-8 _3 w-inline-block  s-option" value="Gold Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);"><img src="https://dev-img.btdmp.com/sbase-file/internal/media/1635869889a6bce76f1b.png" />Gold Base</a>
+        <a class="link-block-8 _3 w-inline-block s-option" value="Silver Base" style="border-left: 1px solid rgb(235, 235, 235); border-right: 1px solid rgb(235, 235, 235);border-bottom: 1px solid rgb(235, 235, 235); border-bottom-left-radius: 5px; border-bottom-right-radius: 5px"><img src="https://dev-img.btdmp.com/sbase-file/internal/media/16358701831ad1a28c7e.png" />Silver Base</a>
+        </div></div></div>`;
+    var nav = document.querySelectorAll('.catalog-nav')[0];
+    nav.innerHTML = '';
+    document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', navContent);
     $('.catalog-nav').css('border', 'none')
     $('.catalog-nav').css('overflow', 'visible')
     $('.catalog-nav').css('height', '800px')
@@ -160,8 +296,32 @@ request.onload = function () {
     $('.w-inline-block').css('border-right', '1px solid #ebebeb')
     $('.w-inline-block-last').css({'border-bottom-left-radius': '10px'})
     $('.w-inline-block-last').css('border-bottom-right-radius', '10px')
-    var container = document.querySelectorAll('.contetnt-printbase')[0]
-    var listContent = ''
+    var container = document.querySelectorAll('.contetnt-printbase')[0];
+    var listContent = '';
+    function mapListBadgeByBaseProductId(baseProductId = 0) {
+      if (!injectDataCatalogV2.result || !injectDataCatalogV2.result.list_badge || !injectDataCatalogV2.result.list_badge.list) return '';
+      const res = [];
+      injectDataCatalogV2.result.list_badge.list.map((item) => {
+        if (item.base_product_id === baseProductId) {
+          res.push(item.badge_id);
+        }
+      });
+
+      return res.join(',');
+    }
+    var badgeFilterContent = `<div id="badgeFilter">
+        <div class="badgeFilter_title">
+            <h4>Collections</h4>
+            <p class="badgeFilter_listFiltered"></p>
+        </div>
+        <div class="badgeFilter_listFilterOption" style="display: none;">
+            <div class="badgeFilter_item">
+                <input type="checkbox" class="badgeFilter_item_checkbox" id="all_badge" value="0">
+                <label for="all_badge">All</label>
+            </div>
+        </div>
+    </div>`;
+    document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', badgeFilterContent);
     injectData.map((item, indexCat) => {
       listItem = ''
       item.list_base_product.map((product, indexProduct) => {
@@ -172,18 +332,17 @@ request.onload = function () {
           })
         }
         listItem += `<div class="base-products" data-cat="${indexCat}" data-index="${indexProduct}" group-name="${product.group_name
-        }" id="${product.title.toSlug()}" data-title="${product.title}" data-search-term="${product.search_term}">
+        }" id="${product.title.toSlug()}" data-title="${product.title}" data-search-term="${product.search_term}" data-custom-badge="${mapListBadgeByBaseProductId(product.id)}">
+                <div class="group-icon">
+                    <p class="ct-badge-icon" style="${mapListBadgeByBaseProductId(product.id) === '' ? 'display: none' : ''}"><img src="https://dev-img.btdmp.com/sbase-file/internal/media/16359589016531495e6f.png" alt="ct-badge-icon" /></p>
+                    <p title="${product.group_name === 'Gold Base' ? ' For each item sold within Gold Base product group, you can receive up to $1 cashback.' : ' For each item sold within Silver Base product group, you can receive up to $0.5 cashback.'}">
+                        <img src="${product.group_name === 'Gold Base' ? 'https://dev-img.btdmp.com/sbase-file/internal/media/1635959007ca0cd88e9d.png' : 'https://dev-img.btdmp.com/sbase-file/internal/media/1635959060dd6ad3571f.png'}">
+                    </p>
+                </div>
                 <img src="${product.image_catalog
 }" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
                 <div class="detail-content">
-                <p title="${product.group_name == 'Gold Base' ? ' For each item sold within Gold Base product group, you can receive up to $1 cashback.' : ' For each item sold within Silver Base product group, you can receive up to $0.5 cashback.'}">
-                    <span style="
-                    font-weight: 600;
-                    border-radius: 3px;
-                    background: ${product.group_name == 'Gold Base' ? '#FFD600' : '#DBDFE1'
-};
-                    padding: 2px 5px;">${product.group_display_name}</span>
-                </p>
+                
                 <p class="title">
                     <strong class="bold">${product.title}</strong>
                 </p>
@@ -216,12 +375,70 @@ request.onload = function () {
     let timeOut = null;
     container.innerHTML = ''
     container.insertAdjacentHTML('beforeend', listContent)
+    container.insertAdjacentHTML('beforeend', filterContent);
     $('.loading-section').fadeOut()
-    $('.catalog').fadeIn()
+    $('.catalog').fadeIn();
+
+    // Custom Badge Handler
+    const listDistinctBadge = [];
+    let titleBadge = [];
+    injectDataCatalogV2.result.list_badge.list.forEach((item, index) => {
+      if (!listDistinctBadge.includes(item.badge_id)) {
+        listDistinctBadge.push(item.badge_id);
+        titleBadge.push(item.display_name);
+        const itemFilterBadge = `<div class="badgeFilter_item">
+        <input type="checkbox" class="badgeFilter_item_checkbox" id="badge-${item.badge_id}" value="${item.badge_id}">
+        <label for="badge-${item.badge_id}">${item.display_name}</label></div>
+        `
+        document.querySelectorAll('.badgeFilter_listFilterOption')[0].insertAdjacentHTML('beforeend', itemFilterBadge);
+      }
+    });
+    document.querySelectorAll('.badgeFilter_listFiltered')[0].insertAdjacentHTML('beforeend', titleBadge.join(', '));
+    $('#badgeFilter .badgeFilter_title').on('click', () => {
+      $('.badgeFilter_listFilterOption').slideToggle();
+    });
+
+    $('.badgeFilter_item').on('click', function() {
+      function checkItemHadBadge(badgeId) {
+        $('.base-products').hide();
+        $('.base-products').each((k, v) => {
+          if (badgeId === '0' || badgeId === 0) {
+            if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge') !== '')  {
+              $(v).show();
+            }
+            return;
+          }
+
+          if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge').indexOf(badgeId) !== -1)  {
+            $(v).show();
+          }
+        });
+      }
+      setTimeout(() => {
+        let nothingFilter = true;
+        $('.badgeFilter_item_checkbox').each(function (k, v) {
+          if ($(v).is(':checked')) {
+            nothingFilter = false;
+            checkItemHadBadge(($(v).val()));
+          }
+        });
+
+        if (nothingFilter) {
+          $('.base-products').show();
+        }
+      }, 5);
+    });
+    // Hidden for test
+    $('#badgeFilter,.ct-badge-icon').hide();
+    window.testCustomBadge = () => {
+      $('#badgeFilter,.ct-badge-icon').show();
+    };
+
+
     $('#select-area').on('click', () => {
-      const open = $('#select_options').css('display')
-      $('#select_options').css('display', `${open == 'none' ? 'block' : 'none'}`)
-    })
+      $('#select_options').toggle();
+    });
+
     var delay = (function(){
       var timer = 0;
       return function(callback, ms){
@@ -315,18 +532,21 @@ request.onload = function () {
         $('.no-product').hide()
       }
     });
+
     $('.s-option').on('click', function (e) {
-      const filterValue = $(this).attr('value')
+      const filterValue = $(this).attr('value');
       $('.base-products').each(function (i, obj) {
-        if (filterValue == 'All' || $(this).attr('group-name') == filterValue) {
+        if (filterValue === 'All' || $(this).attr('group-name') === filterValue) {
           $(this).css('display', 'block')
         } else {
           $(this).css('display', 'none')
         }
       })
-      $('#select-value').text(filterValue)
-      $('#select_options').css('display', 'none')
-    })
+      $('#select-value').text(filterValue);
+      $('#select_options').hide();
+      e.stopPropagation();
+    });
+
     var navHeight = 410
     $('.catalog .navi .link-block-8').each((index, el) => {
       navHeight += $(el).outerHeight()
