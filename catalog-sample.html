@@ -1687,6 +1687,10 @@ s.src = script, s.async = !0, d.getElementsByTagName("head")[0].appendChild(s);<
 
         checkItemHadBadge(null, listBadgeId);
     });
+    // window.testCustomBadge();
+    $('#select-area').on('click', () => {
+        $('#select_options').toggle();
+    });
     var delay = (function () {
         var timer = 0;
         return function (callback, ms) {
