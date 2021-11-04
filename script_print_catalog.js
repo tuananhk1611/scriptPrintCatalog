@@ -315,10 +315,6 @@ request.onload = function () {
             <p class="badgeFilter_listFiltered"></p>
         </div>
         <div class="badgeFilter_listFilterOption" style="display: none;">
-            <div class="badgeFilter_item">
-                <input type="checkbox" class="badgeFilter_item_checkbox" id="all_badge" value="0">
-                <label for="all_badge">All</label>
-            </div>
         </div>
     </div>`;
     document.querySelectorAll('.catalog-nav')[0].insertAdjacentHTML('beforeend', badgeFilterContent);
@@ -399,42 +395,54 @@ request.onload = function () {
     });
 
     $('.badgeFilter_item').on('click', function() {
-      function checkItemHadBadge(badgeId) {
-        $('.base-products').hide();
+      const listBadgeId = [];
+      function checkItemHadBadge(badgeId, listBadgeId = []) {
         $('.base-products').each((k, v) => {
-          if (badgeId === '0' || badgeId === 0) {
-            if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge') !== '')  {
-              $(v).show();
+          if (listBadgeId && listBadgeId.length < 1) {
+            if (badgeId === '0' || badgeId === 0) {
+              if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge') !== '')  {
+                $(v).show();
+              }
+              return;
             }
-            return;
-          }
-
-          if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge').indexOf(badgeId) !== -1)  {
-            $(v).show();
+            if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge').indexOf(badgeId) !== -1) {
+              $(v).show();
+            } else {
+              $(v).hide();
+            }
+          } else {
+            if ($(v).attr('data-custom-badge') && $(v).attr('data-custom-badge').split(',').filter(e => listBadgeId.indexOf(e) !== -1).length > 0) {
+              $(v).show();
+            } else {
+              $(v).hide();
+            }
           }
         });
       }
-      setTimeout(() => {
-        let nothingFilter = true;
-        $('.badgeFilter_item_checkbox').each(function (k, v) {
-          if ($(v).is(':checked')) {
-            nothingFilter = false;
-            checkItemHadBadge(($(v).val()));
+      let nothingFilter = true;
+      $('.badgeFilter_item_checkbox').each(function (k, v) {
+        if ($(v).is(':checked')) {
+          nothingFilter = false;
+          if ($(v).val() === 0 || $(v).val() === '0') {
+            listBadgeId.push('');
+          } else {
+            listBadgeId.push($(v).val());
           }
-        });
-
-        if (nothingFilter) {
-          $('.base-products').show();
         }
-      }, 5);
+      });
+
+      if (nothingFilter) {
+        $('.base-products').show();
+        return;
+      }
+
+      if (listBadgeId.length < 2) {
+        checkItemHadBadge(listBadgeId[0]);
+        return;
+      }
+
+      checkItemHadBadge(null, listBadgeId);
     });
-    // Hidden for test
-    $('#badgeFilter,.ct-badge-icon').hide();
-    window.testCustomBadge = () => {
-      $('#badgeFilter,.ct-badge-icon').show();
-    };
-
-
     $('#select-area').on('click', () => {
       $('#select_options').toggle();
     });
