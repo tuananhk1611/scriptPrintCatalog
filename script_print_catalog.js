@@ -505,8 +505,8 @@ document.getElementsByTagName('head')[0].appendChild(style);
 //document.getElementById('search-input').className = 'cssClass';
 $('.hero-plain').css('position', 'relative')
 document.querySelectorAll('.hero-plain')[0].insertAdjacentHTML('beforeend', searchBarHtml)
-request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/landing-catalogs', true)
-// request.open('GET', 'https://api.shopbase.com/v1/pod/landing-catalogs', true)
+// request.open('GET', 'https://gapi.stag.shopbase.net/v1/pod/landing-catalogs', true)
+request.open('GET', 'https://api.shopbase.com/v1/pod/landing-catalogs', true)
 request.onload = function () {
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
