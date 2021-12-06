@@ -946,6 +946,14 @@ request.onload = function () {
                     >
                         Download Artwork Template Back
                     </a>
+                    <a
+                        style="${productDescriptionData.guideline_url ? '' : 'display:none'}"
+                        href="${productDescriptionData.guideline_url}"
+                        target="_blank"
+                        class="download-template w-inline-block"
+                    >
+                        Explore our design guideline for this product
+                    </a>
                 `)
       }
 
