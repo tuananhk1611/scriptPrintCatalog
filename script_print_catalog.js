@@ -640,7 +640,7 @@ width: auto;
 
     #badgeFilter .badgeFilter_listFilterOption .badgeFilter_item label:before, #badgeFilterMobile .badgeFilter_listFilterOption .badgeFilter_item label:before {
           content:'';
-          -webkit-appearance: none;
+          -webkit-appearance: menulist;
           background-color: transparent;
           border-radius: 6px;
           border: 1px solid #2DB0FA;
