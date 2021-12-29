@@ -21,12 +21,12 @@ if (window.sectionCompareData) {
     return data;
   };
   Object.keys(dataCompare).map(function (item) {
-    var titleItem = `<h4 class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></h4>`;
+    var titleItem = `<label class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></label>`;
     var rowData = ``;
     Object.keys(dataCompare[item]).map(function (dataItem) {
       rowData += `<div class="content-row-item">
 			<div class="description-item">
-				<h5>${dataCompare[item][dataItem].title}</h5>
+				<span>${dataCompare[item][dataItem].title}</span>
 				<p style="${dataCompare[item][dataItem].subTitle ? "" : "display:none;"}">${
         dataCompare[item][dataItem].subTitle
       }</p>
@@ -42,7 +42,7 @@ if (window.sectionCompareData) {
   });
   var contentSectionCompare = `<div id="section-compare" class="section-compare">
 		<div class="w-container">
-			<header class="section-compare-heading"><h4>${sectionCompareheading}</h4><p>${sectionCompareSubHeading}</p></header>
+			<header class="section-compare-heading"><label>${sectionCompareheading}</label><p>${sectionCompareSubHeading}</p></header>
 			<div class="section-compare-content">
 				<div class="section-compare-logo-branch">
 					<div class="spacing-block"></div>
@@ -76,12 +76,12 @@ if (window.sectionCompareData) {
   var getTableCompareContent = (selectedBrand = "shopify") => {
     var tableCompareContentMobile = "";
     Object.keys(dataCompare).map(function (item) {
-      var titleItem = `<h4 class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></h4>`;
+      var titleItem = `<label class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></label>`;
       var rowData = ``;
       Object.keys(dataCompare[item]).map(function (dataItem) {
         rowData += `<div class="content-row-item">
       <div class="description-item">
-        <h5>${dataCompare[item][dataItem].title}</h5>
+        <span>${dataCompare[item][dataItem].title}</span>
         <p style="${
           dataCompare[item][dataItem].subTitle ? "" : "display:none;"
         }">${dataCompare[item][dataItem].subTitle}</p>
@@ -99,7 +99,7 @@ if (window.sectionCompareData) {
   };
   var contentSectionCompareMobile = `<div id="section-compare-mobile" class="section-compare-mobile">
     <div class="w-container">
-      <header class="section-compare-heading"><h4>${sectionCompareheading} Mobile</h4><p>${sectionCompareSubHeading}</p></header>
+      <header class="section-compare-heading"><label>${sectionCompareheading} Mobile</label><p>${sectionCompareSubHeading}</p></header>
       <div class="section-compare-content">
         <div class="section-compare-logo-branch">
           <div class="spacing-block"></div>
