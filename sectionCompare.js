@@ -42,7 +42,7 @@ if (window.sectionCompareData) {
   });
   var contentSectionCompare = `<div id="section-compare" class="section-compare">
 		<div class="w-container">
-			<header class="section-compare-heading"><label>${sectionCompareheading}</label><p>${sectionCompareSubHeading}</p></header>
+			<header class="section-compare-heading"><h2>${sectionCompareheading}</h2><p>${sectionCompareSubHeading}</p></header>
 			<div class="section-compare-content">
 				<div class="section-compare-logo-branch">
 					<div class="spacing-block"></div>
@@ -99,7 +99,7 @@ if (window.sectionCompareData) {
   };
   var contentSectionCompareMobile = `<div id="section-compare-mobile" class="section-compare-mobile">
     <div class="w-container">
-      <header class="section-compare-heading"><label>${sectionCompareheading} Mobile</label><p>${sectionCompareSubHeading}</p></header>
+      <header class="section-compare-heading"><h2>${sectionCompareheading} Mobile</h2><p>${sectionCompareSubHeading}</p></header>
       <div class="section-compare-content">
         <div class="section-compare-logo-branch">
           <div class="spacing-block"></div>
