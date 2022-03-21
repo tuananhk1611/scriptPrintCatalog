@@ -1,6 +1,6 @@
 var request = new XMLHttpRequest();
 var searchBarHtml = `<div class="container search-box">
-    <img style="position:absolute;left:16px;top:0;margin-top:20px;" src="https://www.printbase.com/wp-content/uploads/2021/07/Search.svg" >
+    <img style="position:absolute;left:16px;top:0;margin-top:20px;" src="https://templates.shopbase.com/_ipx/w_16/svg/icon-search.svg" >
     <input id="search-input" type="text" placeholder="Search for products..." />
     <button id="search-submit" type="button">Search</button>
   </div>`;
