@@ -1452,14 +1452,14 @@ request.onload = function () {
                         <img src="https://dev-img.btdmp.com/sbase-file/internal/media/16359589016531495e6f.png" alt="ct-badge-icon" />
                         <span class="tool-tip">Best selling products</span>
                     </p>
-                    <p>
+                    <p style="${product.group_name !== "Gold Base" && product.group_name !== "Silver Base" ? "display:none" : ''}">
                         <img src="${product.group_name === "Gold Base"
                     ? "https://dev-img.btdmp.com/sbase-file/internal/media/1635959007ca0cd88e9d.png"
                     : "https://dev-img.btdmp.com/sbase-file/internal/media/1635959060dd6ad3571f.png"
                 }">
                         <span class="tool-tip">${product.group_name === "Gold Base"
-                    ? " For each item sold within Gold Base product group, you can receive up to $1 cashback."
-                    : " For each item sold within Silver Base product group, you can receive up to $0.5 cashback."
+                    ? " Gold Base"
+                    : " Silver Base"
                 }</span>
                     </p>
                 </div>
@@ -1700,9 +1700,11 @@ request.onload = function () {
             switch (input.toLowerCase().replace('-', ' ')) {
                 case 'gold base':
                     return 'https://dev-img.btdmp.com/sbase-file/internal/media/1635959007ca0cd88e9d.png'
+                case 'gold base':
+                    return 'https://dev-img.btdmp.com/sbase-file/internal/media/1635959060dd6ad3571f.png'    
 
                 default:
-                    return 'https://dev-img.btdmp.com/sbase-file/internal/media/1635959060dd6ad3571f.png'
+                    return null;
             }
         }
 
