@@ -34,7 +34,7 @@ if (window.sectionCompareData) {
       Object.keys(dataCompare[item]).map(function (dataItem) {
         rowData += `<div class="content-row-item">
               <div class="description-item">
-                  <h5>${dataCompare[item][dataItem].title}</h5>
+                  <h3>${dataCompare[item][dataItem].title}</h3>
                   <p style="${dataCompare[item][dataItem].subTitle ? "" : "display:none;"}">${dataCompare[item][dataItem].subTitle}</p>
               </div>
               <div class="info-item-wrapper">
@@ -80,7 +80,7 @@ if (window.sectionCompareData) {
         Object.keys(dataCompare[item]).map(function (dataItem) {
           rowData += `<div class="content-row-item">
         <div class="description-item">
-          <h5>${dataCompare[item][dataItem].title}</h5>
+          <h3>${dataCompare[item][dataItem].title}</h3>
           <p style="${dataCompare[item][dataItem].subTitle ? "" : "display:none;"}">${dataCompare[item][dataItem].subTitle}</p>
         </div>
         <div class="info-item-wrapper">
@@ -162,4 +162,4 @@ if (window.sectionCompareData) {
       });
     });
   });
- } 
+ }
