@@ -112,7 +112,8 @@ nav.nav-menu-3{
 
 }
 .detail-content .title{
-font-size:16px;
+  font-size:16px;
+  line-height: 22px;
 }
 .detail-content .description._2{
 font-size:14px;
@@ -686,6 +687,7 @@ width: auto;
     color: #000;
     margin-bottom: 16px;
     font-weight: 700;
+    margin-top: 0;
 }
 
 .base-product-wrap .base-product-line {
@@ -1467,8 +1469,9 @@ request.onload = function () {
                 }" sizes="(max-width: 479px) 88vw, (max-width: 767px) 55vw, 64vw" alt="" class="image-product">
             <div class="detail-content">
 
-            <p class="title">
-                <strong class="bold">${product.title}</strong>
+            <h3 class="title">
+               ${product.title}
+            </h3>
             </p>
             <p class="description _2">Base cost from:
                 <strong class="price">$${product.base_cost}</strong>
@@ -1484,7 +1487,7 @@ request.onload = function () {
             `;
             });
             var text1 = `<div id="${item.name.toSlug()}" style="${indexCat === 0 ? "" : ""
-            }" class="base-product-wrap"><div class="collection-title">${item.name
+            }" class="base-product-wrap"><h2 class="collection-title">${item.name
             }</div>
         <p class="no-product" style="display:none;">No product found</p>
         <div class="w-layout-grid grid-17 _2 base-product-grid">
