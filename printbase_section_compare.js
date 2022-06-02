@@ -29,7 +29,7 @@ if (window.sectionCompareData) {
       return data;
     };
     Object.keys(dataCompare).map(function (item) {
-      var titleItem = `<h4 class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></h4>`;
+      var titleItem = `<h2 class="title-item" data-target="${item}-content">${item}<span class="toogle-icon"></span></h2>`;
       var rowData = ``;
       Object.keys(dataCompare[item]).map(function (dataItem) {
         rowData += `<div class="content-row-item">
