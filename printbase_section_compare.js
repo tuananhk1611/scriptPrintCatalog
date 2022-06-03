@@ -94,7 +94,7 @@ if (window.sectionCompareData) {
     };
     var contentSectionCompareMobile = `<div id="section-compare-mobile" class="section-compare-mobile">
       <div class="w-container">
-        <header class="section-compare-heading"><h4>${sectionCompareheading} Mobile</h4><p>${sectionCompareSubHeading}</p></header>
+        <header class="section-compare-heading"><div>${sectionCompareheading} Mobile</div><p>${sectionCompareSubHeading}</p></header>
         <div class="section-compare-content">
           <div class="section-compare-logo-branch">
             <div class="spacing-block"></div>
