@@ -1991,7 +1991,23 @@ request.onload = function () {
             const productDescriptions = document.querySelectorAll(
                 ".product-description-popup .detail-popup .description-popup"
             );
+            //Check if product have these notes bellow
+            // * The price list is for reference purposes only. Prices may vary according to size and color selected.
+            // * Two-sided printed shirts are available for $5 more each shirt.    
+            let productNoteOne = '';
+            let productNoteTwo = '';              
             if (productDescriptions.length) {
+                let firstNote = '* The price list is for reference purposes only. Prices may vary according to size and color selected.';
+                let secondNote = '* Two-sided printed shirts are available for $5 more each shirt.';
+                let shortDescriptionV2 = productDescriptionData.short_description;
+                if (productDescriptionData.short_description.indexOf(firstNote) > -1){
+                    productNoteOne = firstNote;
+                    shortDescriptionV2 = shortDescriptionV2.replace(firstNote, '');
+                }
+                if (productDescriptionData.short_description.indexOf(secondNote) > -1){
+                    productNoteTwo = secondNote;
+                    shortDescriptionV2 = shortDescriptionV2.replace(secondNote, '');
+                }
                 productDescriptions[0].innerHTML = "";
                 productDescriptions[0].insertAdjacentHTML(
                     "beforeend",
@@ -2052,7 +2068,7 @@ style="background-image:url(${getProductCashbackTierIcon(productDescriptionData.
                     <p><strong>Processing days:</strong> ${productDescriptionData.min_processing_day
                     } - ${productDescriptionData.max_processing_day
                     } business days</p>
-                    <p>${productDescriptionData.short_description}</p>
+                    <p>${shortDescriptionV2}</p>
                     <a
                         style="${dataArwort.length === 1 && dataArwort[0]
                         ? ""
@@ -2175,7 +2191,7 @@ style="background-image:url(${getProductCashbackTierIcon(productDescriptionData.
                     lastRowData.push({name: sizeData.size});
                     if (hasWhiteColor && hasOtherColor) {
                         lastRowData.push({name: `$${sizeData.white_color_price}`});
-                        lastRowData.push({name: `$${sizeData.other_color_price}`});
+                        lastRowData.push({name: `$${sizeData.other_color_price}+`});
                     } else {
                         lastRowData.push({name: `$${sizeData.price}`});
                     }
@@ -2278,6 +2294,17 @@ style="background-image:url(${getProductCashbackTierIcon(productDescriptionData.
                         tableData
                     )}</div>`
                 );
+            }
+            
+            $('.product-note-under-table').remove();
+            $(".table-sizechart").css("margin-top", "0px");
+            if (productNoteTwo) {
+                $(".table-sizechart").css("margin-top", "-10px");
+                $( `<p class="product-note-under-table" style="color: #333;font-size: 14px; line-height: 20px; font-family: inter;">${productNoteTwo}</p>` ).insertAfter( ".table-sizechart" );
+            }
+            if (productNoteOne) {
+                $(".table-sizechart").css("margin-top", "-10px");
+                $( `<p class="product-note-under-table" style="color: #333;font-size: 14px; line-height: 20px; font-family: inter; margin-top: -17px">${productNoteOne}</p>` ).insertAfter( ".table-sizechart" );
             }
 
             $(".product-description-popup").fadeIn(100);
