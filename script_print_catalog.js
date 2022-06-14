@@ -1488,7 +1488,7 @@ request.onload = function () {
             });
             var text1 = `<div id="${item.name.toSlug()}" style="${indexCat === 0 ? "" : ""
             }" class="base-product-wrap"><h2 class="collection-title">${item.name
-            }</div>
+            }</h2>
         <p class="no-product" style="display:none;">No product found</p>
         <div class="w-layout-grid grid-17 _2 base-product-grid">
             ${listItem}
