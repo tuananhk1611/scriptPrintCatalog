@@ -115,8 +115,9 @@ nav.nav-menu-3{
   font-size:16px;
   line-height: 22px;
 }
-.detail-content .description._2{
+.detail-content .description._2 {
 font-size:14px;
+font-family: Inter, sans-serif;
 }
  .navigation-right-4 a[href="./pricing"]{
    display:none;
@@ -389,9 +390,7 @@ box-sizing:content-box;
   grid-row-gap: 16px;
   place-items:stretch;
 }
-.navigation-left-3{
-width: auto;
-}
+
 .description-popup> table:nth-of-type(2) tr:nth-of-type(2) table p{
   font-size: 14px;
   line-height :20px;
@@ -515,6 +514,7 @@ width: auto;
         border-right-color: transparent;
         font-weight: 600;
         color: #6E7A81;
+        font-family: Inter, sans-serif;
     }
 
     .catalog .pbase-catalog-nav-item:hover {
