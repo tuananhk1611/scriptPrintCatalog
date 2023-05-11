@@ -106,11 +106,6 @@ height:50px;
   text-align:center;
 }
  
-nav.nav-menu-3{
-  margin-left:-16px;
-  margin-right:auto
-
-}
 .detail-content .title{
   font-size:16px;
   line-height: 22px;
